@@ -24,7 +24,7 @@ export const config = {
   },
 };
 
-let handler;
+let handler: undefined | ((req: any, res:any) => void) = undefined;
 
 async function initializeHandler() {
   await apolloServer.start();
@@ -33,9 +33,9 @@ async function initializeHandler() {
 
 initializeHandler();
 
-export default async function graphql(req, res) {
+export default async function graphql(req:any, res:any) {
   if (!handler) {
     await initializeHandler();
   }
-  return handler(req, res);
+  return handler && handler(req, res);
 }
