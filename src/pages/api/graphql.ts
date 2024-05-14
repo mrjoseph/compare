@@ -1,41 +1,24 @@
 // pages/api/graphql.js
-import { ApolloServer, gql } from 'apollo-server-micro';
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+import { ApolloServer } from 'apollo-server-micro'
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
+import { resolvers, typeDefs, dataSources } from '@/apollo'
 
-const resolvers = {
-  Query: {
-    hello: () => 'Hello from Apollo Server!',
-  },
-};
-
-const apolloServer = new ApolloServer({
+const server = new ApolloServer({
   typeDefs,
   resolvers,
-});
+  csrfPrevention: true,
+  cache: 'bounded',
+  plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+  dataSources,
+})
+
+export default await server
+  .start()
+  .then(() => server.createHandler({ path: '/api/graphql' }))
 
 export const config = {
   api: {
     bodyParser: false,
   },
-};
-
-let handler: undefined | ((req: any, res:any) => void) = undefined;
-
-async function initializeHandler() {
-  await apolloServer.start();
-  handler = apolloServer.createHandler({ path: '/api/graphql' });
-}
-
-initializeHandler();
-
-export default async function graphql(req:any, res:any) {
-  if (!handler) {
-    await initializeHandler();
-  }
-  return handler && handler(req, res);
 }

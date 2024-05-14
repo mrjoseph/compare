@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.3",
+    "@apollo/sandbox": "^2.5.1",
     "@apollo/server": "^4.10.2",
     "@as-integrations/next": "^3.0.0",
     "@emotion/cache": "^11.11.0",
@@ -21,17 +23,19 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "apollo-server": "^3.13.0",
     "apollo-server-micro": "^3.13.0",
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "graphql": "^16.8.1",
+    "micro": "^10.0.1",
     "next": "14.1.4",
     "playwright": "^1.44.0",
     "puppeteer": "^22.8.0",
     "puppeteer-core": "^22.8.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.50.1",
+    "react-hook-form": "^7.51.4",
     "react-uuid": "^2.0.0"
   },
   "devDependencies": {
@@ -40,6 +44,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
+    "prettier": "^3.2.5",
     "typescript": "^5"
   }
 }

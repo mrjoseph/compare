@@ -1,0 +1,826 @@
+{
+    "propertyData": {
+        "id": "137808983",
+        "status": {
+            "published": true,
+            "archived": false
+        },
+        "text": {
+            "description": "<p>No chain. Super location for commuting or just excursions. Hatfield train station several minutes walk away. This one double bedroom apartment is situated in \"Old Hatfield\" the towns most desirable residential area. With the benefit of parking too.</p><br /><br />Situated in Old Hatfield giving access to local shops and amenities as well as within easy access to the mainline BR station, giving access to Kings Cross and Moorgate Station. The A1(M) lies to the egde of the town giving excellent communications to the North and South. Nearby are the grounds of historic Hatfield House.<br /><br />Excellent first time buy, this one bed flat comes with easy commuting to London and is situated in Old Hatfield!<br /><br />",
+            "propertyPhrase": "1 bedroom apartment",
+            "disclaimer": "<b>Disclaimer</b> - Property reference 26466827. The information displayed about this property comprises a property advertisement. Rightmove.co.uk makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and Rightmove has no control over the content. This property advertisement does not constitute property particulars. The information is provided and maintained by <b>Country Properties, Hatfield</b>.&nbsp;Please contact the selling agent or developer directly to obtain any information which may be available under the terms of The Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 or the Home Report if in relation to a residential property in Scotland.",
+            "auctionFeesDisclaimer": null,
+            "guidePriceDisclaimer": null,
+            "reservePriceDisclaimer": null,
+            "staticMapDisclaimerText": "Map data ©<a href=\"http://www.openstreetmap.org/copyright\" rel=\"nofollow\" target=\"_blank\" title=\"Open Street Map\">OpenStreetMap</a> contributors.",
+            "newHomesBrochureDisclaimer": "Please note that Rightmove will send the above details to Country Properties only. By submitting this form, you confirm that you agree to our website <a href=\"/this-site/terms-of-use.html\">terms of use</a>, our <a href=\"/this-site/privacy-policy.html\">privacy policy</a> and understand how we store <a href=\"/this-site/cookies.html\">cookies</a> on your device.",
+            "shareText": "Check out this 1 bedroom apartment for sale on Rightmove",
+            "shareDescription": "1 bedroom apartment for sale in Church Lane, Hatfield, AL9 for £210,000. Marketed by Country Properties, Hatfield",
+            "pageTitle": "1 bedroom apartment for sale in Church Lane, Hatfield, AL9",
+            "shortDescription": "1 bedroom apartment for sale"
+        },
+        "prices": {
+            "primaryPrice": "£210,000",
+            "secondaryPrice": null,
+            "displayPriceQualifier": "",
+            "pricePerSqFt": null,
+            "message": null,
+            "exchangeRate": null
+        },
+        "address": {
+            "displayAddress": "Church Lane, Hatfield, AL9",
+            "countryCode": "GB",
+            "deliveryPointId": 33272572,
+            "ukCountry": "England",
+            "outcode": "AL9",
+            "incode": "5HX"
+        },
+        "keyFeatures": [
+            "Offered with no onward chain",
+            "Neighbouring Hatfield House, park and gardens",
+            "Plenty of built in storage",
+            "Kitchen / breakfast room",
+            "Double bedroom with double wardrobe",
+            "Double glazing and gas cental heating"
+        ],
+        "images": [
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_00_0000.jpeg",
+                "caption": null,
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_00_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_00_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_00_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_01_0000.jpeg",
+                "caption": null,
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_01_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_01_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_01_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_02_0000.jpeg",
+                "caption": null,
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_02_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_02_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_02_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_03_0000.jpeg",
+                "caption": null,
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_03_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_03_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_03_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_07_0000.jpeg",
+                "caption": null,
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_07_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_07_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_07_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_04_0000.jpeg",
+                "caption": null,
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_04_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_04_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_04_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_05_0000.jpeg",
+                "caption": "Church",
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_05_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_05_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_05_0000_max_656x437.jpeg"
+                }
+            },
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_IMG_06_0000.jpeg",
+                "caption": "Hatfield House",
+                "resizedImageUrls": {
+                    "size135x100": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_06_0000_max_135x100.jpeg",
+                    "size476x317": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_06_0000_max_476x317.jpeg",
+                    "size656x437": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_IMG_06_0000_max_656x437.jpeg"
+                }
+            }
+        ],
+        "floorplans": [
+            {
+                "url": "https://media.rightmove.co.uk/59k/58189/137808983/58189_26466827_FLP_00_0000.jpeg",
+                "caption": "Floorplan 1",
+                "type": "IMAGE",
+                "resizedFloorplanUrls": {
+                    "size296x197": "https://media.rightmove.co.uk/dir/59k/58189/137808983/58189_26466827_FLP_00_0000_max_296x197.jpeg"
+                }
+            }
+        ],
+        "virtualTours": [],
+        "customer": {
+            "branchId": 58189,
+            "branchName": "Hatfield",
+            "branchDisplayName": "Country Properties, Hatfield",
+            "companyName": "Hunters Property Group Ltd",
+            "companyTradingName": "Hunters",
+            "displayAddress": "7 The Broadway,\r\nOld Hatfield,\r\nAL9 5BG",
+            "logoPath": "https://media.rightmove.co.uk/brand/brand_logo_56245_0006.png",
+            "customerDescription": {
+                "truncatedDescriptionHTML": "<p>**AWARD WINNING LOCAL PROPERTY EXPERTS WITH A GENUINE 4.9 / 5 STAR GOOGLE CUSTOMER SERVICE RATING**</p><p>Whether you're selling, letting or buying property in Hatfield, we help you every step of the way.</p><p>Our dedicated, professional team provides expert guidance 24/7, so you always know what's happening.</p><p>Having been established in Hatfield for over a decade, we've got the local knowledge you need to make informed decisions about your property. Get in touch today.<b> </b></p><p><b></b></p>",
+                "isTruncated": true,
+                "descriptionHTML": "<p>**AWARD WINNING LOCAL PROPERTY EXPERTS WITH A GENUINE 4.9 / 5 STAR GOOGLE CUSTOMER SERVICE RATING**</p><p>Whether you're selling, letting or buying property in Hatfield, we help you every step of the way.</p><p>Our dedicated, professional team provides expert guidance 24/7, so you always know what's happening.</p><p>Having been established in Hatfield for over a decade, we've got the local knowledge you need to make informed decisions about your property. Get in touch today.<b> </b></p><p><b>Our services</b></p><p></p><ul><li>Free property valuation</li><li>Local property experts to guide you</li><li>Bespoke marketing packages to make your property stand out</li><li>Flexible lettings packages for landlords</li></ul><p></p>"
+            },
+            "bannerAd": "https://media.rightmove.co.uk/59k/58189/1708356986911_bp_pd_h_r.jpg",
+            "mpuAd": "https://media.rightmove.co.uk/59k/58189/1708356992993_bp_mpu_r.jpg",
+            "customerProfileUrl": "/estate-agents/agent/Country-Properties/Hatfield-58189.html",
+            "customerBannerAdProfileUrl": "/estate-agents/agent/Country-Properties/Hatfield-58189.html#ram_about_us",
+            "customerMpuAdProfileUrl": "/estate-agents/agent/Country-Properties/Hatfield-58189.html#ram_about_us",
+            "customerPropertiesUrl": "/property-for-sale/find/Country-Properties/Hatfield.html?locationIdentifier=BRANCH%5E58189&includeSSTC=true&_includeSSTC=on",
+            "isNewHomeDeveloper": false,
+            "spotlight": null,
+            "showBrochureLeadModal": false,
+            "developmentInfo": {
+                "sitePlanUri": null,
+                "micrositeFeatures": []
+            },
+            "buildToRent": false,
+            "commercial": false,
+            "buildToRentBenefits": [],
+            "videoUrl": null,
+            "videoEnabled": false
+        },
+        "industryAffiliations": [
+            {
+                "name": "Ombudsman for REsale Estate Agents (no OFT logo)",
+                "imagePath": "https://media.rightmove.co.uk/dir/customer/industry-affiliation/ombudsman-for-resale-estate-agent_max_135x100.png"
+            }
+        ],
+        "rooms": [
+            {
+                "name": "Ground Floor",
+                "description": null,
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Entrance Hall",
+                "description": "UPVC Front door leading into hall. Engineered wood flooring. Radiator. 2 Storage cupboard one of which is especially large. Airing cupboard. Radiator. Doors leading to:-",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Lounge (Reception)",
+                "description": "12' 6\" x 10' 3\" (3.81m x 3.12m) Double glazed windows to rear aspect. Radiator.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Kitchen/Breakfast",
+                "description": "12' 5\" x 8' 3\" (3.78m x 2.51m) Fitted base and wall units with roll top worktops, splash tiling. Space for cooker, fitted extractor over. Space for additional appliances. Single bowl sink and drainer. Space for breakfast table. Double glazed window to front aspect. Radiator. Boiler housed in fitted unit.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Bedroom",
+                "description": "12' 6\" x 8' 1\" (3.81m x 2.46m) upto double fitted wardrobes with sliding doors. Double glazed window to rear aspect. Radiator.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Bathroom",
+                "description": "Bath with shower mixer attachment. Wash hand-basin. Low level WC. Radiator. Double glazed opaque window to front aspect.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Parking",
+                "description": "There is resident parking to the front. Not allocated.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Hatfield",
+                "description": "The property is situated in sought-after Old Hatfield, the village and conservation area neighboring The Marquess of Salisbury's historically significant Hatfield House and the 13th century St Etheldreda's Church. Entrances to The House and Great Park* are in close proximity, as are local pubs, shops and the Hatfield train and bus station. Welwyn Garden City, St Albans, and Hertford are easily accessible as are the A1(M) and M25. Luton airport is just 22 miles away. <br />Conveniently placed close to Old Hatfield and Hatfield train station. With well regarded local schools. Easy access to St. Albans and Hatfield. The Next Generation Gym and the 'Galleria' are close by and Historic Hatfield House, park and gardens are all within easy reach. Good local schools.<br /><br />.<br /><br />PLEASE NOTE THAT THESE ARE DRAFT PARTICULARS AND HAVE NOT YET BEEN APPROVED BY THE VENDORS.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            },
+            {
+                "name": "Lease",
+                "description": "The term of the lease is 125 years from 1987. Approximately 89 years from 2023.",
+                "width": null,
+                "length": null,
+                "unit": null,
+                "dimension": null
+            }
+        ],
+        "location": {
+            "latitude": 51.761025,
+            "longitude": -0.214431,
+            "circleRadiusOnMap": 0,
+            "zoomLevel": 15,
+            "pinType": "ACCURATE_POINT",
+            "showMap": true
+        },
+        "streetView": {
+            "heading": 90,
+            "pitch": 5,
+            "zoom": 0,
+            "latitude": 51.760725,
+            "longitude": -0.21482
+        },
+        "nearestAirports": [],
+        "nearestStations": [
+            {
+                "name": "Hatfield Station",
+                "types": [
+                    "NATIONAL_TRAIN"
+                ],
+                "distance": 0.21475856198831722,
+                "unit": "miles"
+            },
+            {
+                "name": "Welham Green Station",
+                "types": [
+                    "NATIONAL_TRAIN"
+                ],
+                "distance": 1.741415974687374,
+                "unit": "miles"
+            },
+            {
+                "name": "Welwyn Garden City Station",
+                "types": [
+                    "NATIONAL_TRAIN"
+                ],
+                "distance": 2.7946668843692093,
+                "unit": "miles"
+            }
+        ],
+        "showSchoolInfo": true,
+        "countryGuide": null,
+        "propertySaved": false,
+        "propertyNote": "",
+        "consumerData": {
+            "consumerInitials": "TJ"
+        },
+        "channel": "RES_BUY",
+        "propertyUrls": {
+            "similarPropertiesUrl": "/property-for-sale/AL9-5HX.html?radius=0.5&minPrice=180000&maxPrice=240000&minBedrooms=1",
+            "nearbySoldPropertiesUrl": "/house-prices/al9-5hx.html"
+        },
+        "sizings": [],
+        "brochures": [],
+        "epcGraphs": [],
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "transactionType": "BUY",
+        "tags": [],
+        "misInfo": {
+            "branchId": 58189,
+            "offerAdvertStampTypeId": null,
+            "premiumDisplay": false,
+            "premiumDisplayStampId": null,
+            "brandPlus": true,
+            "featuredProperty": false
+        },
+        "dfpAdInfo": {
+            "channel": "RES_BUY",
+            "targeting": [
+                {
+                    "key": "SO",
+                    "value": [
+                        "FALSE"
+                    ]
+                },
+                {
+                    "key": "R",
+                    "value": [
+                        "FALSE"
+                    ]
+                },
+                {
+                    "key": "AUCP",
+                    "value": [
+                        "FALSE"
+                    ]
+                },
+                {
+                    "key": "CCY",
+                    "value": [
+                        "GBP"
+                    ]
+                },
+                {
+                    "key": "UTo_A",
+                    "value": [
+                        "AL"
+                    ]
+                },
+                {
+                    "key": "UTo_C",
+                    "value": [
+                        "GB"
+                    ]
+                },
+                {
+                    "key": "CT",
+                    "value": [
+                        "property-for-sale"
+                    ]
+                },
+                {
+                    "key": "TT",
+                    "value": [
+                        "buy"
+                    ]
+                },
+                {
+                    "key": "BD",
+                    "value": [
+                        "1"
+                    ]
+                },
+                {
+                    "key": "PT",
+                    "value": [
+                        "flats_apartments"
+                    ]
+                },
+                {
+                    "key": "PST",
+                    "value": [
+                        "apartment"
+                    ]
+                },
+                {
+                    "key": "RESALEPRICE",
+                    "value": [
+                        "210000"
+                    ]
+                },
+                {
+                    "key": "B",
+                    "value": [
+                        "Band4"
+                    ]
+                },
+                {
+                    "key": "B_ID",
+                    "value": [
+                        "58189"
+                    ]
+                },
+                {
+                    "key": "C_ID",
+                    "value": [
+                        "Country Properties"
+                    ]
+                },
+                {
+                    "key": "FP",
+                    "value": [
+                        "Y"
+                    ]
+                },
+                {
+                    "key": "EPC",
+                    "value": [
+                        "N"
+                    ]
+                },
+                {
+                    "key": "P_ID",
+                    "value": [
+                        "137808983"
+                    ]
+                },
+                {
+                    "key": "OV",
+                    "value": [
+                        "N"
+                    ]
+                },
+                {
+                    "key": "UTo_D",
+                    "value": [
+                        "AL9"
+                    ]
+                },
+                {
+                    "key": "UTo_Inc",
+                    "value": [
+                        "5HX"
+                    ]
+                },
+                {
+                    "key": "F",
+                    "value": [
+                        "parking",
+                        "garden"
+                    ]
+                },
+                {
+                    "key": "UTo_UKZ",
+                    "value": [
+                        "England"
+                    ]
+                }
+            ]
+        },
+        "staticMapImgUrls": {
+            "staticMapImgUrlMobile": "https://media.rightmove.co.uk/map/_generate?width=375&height=375&zoomLevel=15&latitude=51.761025&longitude=-0.214431&signature=nx3Le2P7dP4mwe9Zlwdnh-k-YE4=",
+            "staticMapImgUrlTablet": "https://media.rightmove.co.uk/map/_generate?width=768&height=347&zoomLevel=15&latitude=51.761025&longitude=-0.214431&signature=59e2ZF-LexPZjXiZLdPJEeEFYkc=",
+            "staticMapImgUrlDesktopSmall": "https://media.rightmove.co.uk/map/_generate?width=580&height=347&zoomLevel=15&latitude=51.761025&longitude=-0.214431&signature=4G7uTGTFKDLJZu3V6Ks_QwqAOuM=",
+            "staticMapImgUrlDesktopLarge": "https://media.rightmove.co.uk/map/_generate?width=761&height=347&zoomLevel=15&latitude=51.761025&longitude=-0.214431&signature=6Qtj5b0o21zNSnvM3xcPcs4-_oU="
+        },
+        "listingHistory": {
+            "listingUpdateReason": "Reduced on 03/04/2024"
+        },
+        "feesApply": null,
+        "broadband": {
+            "disclaimer": "* This is the average speed from the provider with the fastest broadband package available on <a rel=\"sponsored\" href=\"https://www.comparethemarket.com\" target=\"_blank\">comparethemarket.com</a> at this postcode. The average speed displayed is based on the download speeds of at least 50% of customers at peak time (8pm to 10pm). Fibre/cable services at the postcode are subject to availability and may differ between properties within a postcode. Speeds can be affected by a range of technical and environmental factors. The speed at the property may be lower than that listed above. You can check the estimated speed and confirm availability to a property prior to purchasing on the broadband provider's website. Providers may increase charges. The information is provided and maintained by <a href=\"https://www.stickee.co.uk/\" target=\"_blank\">Stickee Technology Limited</a>.",
+            "broadbandCheckerUrl": "https://partnerships-broadband.comparethemarket.com/v1/broadband/rightmove/AL95HX?apikey=a2aac1115e205d960886f7cb511a1e87b1804b1ec9aa3c7cc6db0a5f1815cb76"
+        },
+        "contactInfo": {
+            "contactMethod": "EMAIL",
+            "telephoneNumbers": {
+                "localNumber": "01707 271450",
+                "internationalNumber": null,
+                "disclaimerText": null,
+                "disclaimerTitle": null,
+                "disclaimerDescription": null
+            }
+        },
+        "lettings": null,
+        "infoReelItems": [
+            {
+                "title": "PROPERTY TYPE",
+                "type": "PROPERTY_TYPE",
+                "primaryText": "Apartment",
+                "secondaryText": "",
+                "tooltipText": ""
+            },
+            {
+                "title": "BEDROOMS",
+                "type": "BEDROOMS",
+                "primaryText": "1",
+                "secondaryText": "",
+                "tooltipText": ""
+            },
+            {
+                "title": "BATHROOMS",
+                "type": "BATHROOMS",
+                "primaryText": "1",
+                "secondaryText": "",
+                "tooltipText": ""
+            },
+            {
+                "title": "SIZE",
+                "type": "SIZE",
+                "primaryText": "Ask agent",
+                "secondaryText": "",
+                "tooltipText": ""
+            }
+        ],
+        "mortgageCalculator": {
+            "price": 210000,
+            "propertyTypeAlias": "flats_apartments"
+        },
+        "tenure": {
+            "tenureType": "LEASEHOLD",
+            "yearsRemainingOnLease": null,
+            "message": null
+        },
+        "soldPropertyType": "UNKNOWN",
+        "auctionProvider": null,
+        "propertySubType": "Apartment",
+        "businessForSale": false,
+        "commercial": false,
+        "commercialUseClasses": [],
+        "affordableBuyingScheme": false,
+        "sharedOwnership": {
+            "sharedOwnershipFlag": false,
+            "ownershipPercentage": null,
+            "rentPrice": null,
+            "rentFrequency": "(for payment frequency, ask the agent)"
+        },
+        "livingCosts": {
+            "councilTaxExempt": false,
+            "councilTaxIncluded": false,
+            "annualGroundRent": null,
+            "groundRentReviewPeriodInYears": null,
+            "groundRentPercentageIncrease": null,
+            "annualServiceCharge": null,
+            "councilTaxBand": null,
+            "domesticRates": null
+        },
+        "termsOfUse": "This Application Programming Interface (API) is for the use of Rightmove Group Limited only. No other individual or business may link to, or make use of, this API without the express written permission of Rightmove's Legal Team. Any unauthorised use of this API will constitute a breach of Rightmove's Terms of Use, available at https://www.rightmove.co.uk/this-site/terms-of-use.html, and Rightmove will enforce its rights to the fullest extent permitted by law.",
+        "features": {
+            "electricity": [],
+            "broadband": [],
+            "water": [],
+            "sewerage": [],
+            "heating": [],
+            "accessibility": [],
+            "parking": [
+                {
+                    "alias": "parking",
+                    "displayText": "Yes"
+                }
+            ],
+            "garden": [
+                {
+                    "alias": "garden",
+                    "displayText": "Yes"
+                }
+            ],
+            "risks": {
+                "floodedInLastFiveYears": null,
+                "floodDefences": null,
+                "floodSources": []
+            },
+            "obligations": {
+                "listed": null,
+                "restrictions": null,
+                "requiredAccess": null,
+                "rightsOfWay": null
+            }
+        },
+        "entranceFloor": null
+    },
+    "metadata": {
+        "publicsiteUrl": "//www.rightmove.co.uk",
+        "cookieDomain": "rightmove.co.uk",
+        "currencyCode": "",
+        "emailAgentUrl": "/property-for-sale/contactBranch.html?backToPropertyURL=%2Fproperties%2F137808983&propertyId=137808983",
+        "facebookShareUrl": "https://facebook.com/share.php?u=https%3A%2F%2Fwww.rightmove.co.uk%2Fproperties%2F137808983%3Futm_campaign%3Dproperty-details%26utm_content%3Dbuying%26utm_medium%3Dsharing%26utm_source%3Dfacebook%23%2F%26channel%3DRES_BUY",
+        "twitterShareUrl": "https://twitter.com/share?text=Check out this 1 bedroom apartment for sale on Rightmove&url=https%3A%2F%2Fwww.rightmove.co.uk%2Fproperties%2F137808983%3Futm_campaign%3Dproperty-details%26utm_content%3Dbuying%26utm_medium%3Dsharing%26utm_source%3Dtwitter%23%2F%26channel%3DRES_BUY",
+        "emailShareUrl": "mailto:?subject=Check%20out%20this%201%20bedroom%20apartment%20for%20sale%20on%20Rightmove&body=Check%20out%20this%201%20bedroom%20apartment%20for%20sale%20in%20Church%20Lane,%20Hatfield,%20AL9%20for%20%C2%A3210,000.%20Marketed%20by%20Country%20Properties,%20Hatfield%20on%20Rightmove%0Ahttps%3A%2F%2Fwww.rightmove.co.uk%2Fproperties%2F137808983%3Futm_campaign%3Dproperty-details%26utm_content%3Dbuying%26utm_medium%3Demail%26utm_source%3Dsendtofriend%23%2F%26channel%3DRES_BUY",
+        "copyLinkUrl": "https://www.rightmove.co.uk/properties/137808983?utm_campaign=property-details&utm_content=buying&utm_medium=sharing&utm_source=copytoclipboard#/&channel=RES_BUY",
+        "whatsAppShareUrl": "https://web.whatsapp.com/send?text=Check%20out%20this%201%20bedroom%20apartment%20for%20sale%20on%20Rightmove%0Ahttps%3A%2F%2Fwww.rightmove.co.uk%2Fproperties%2F137808983%3Futm_campaign%3Dproperty-details%26utm_content%3Dbuying%26utm_medium%3Dsharing%26utm_source%3Dwhatsapp%23%2F%26channel%3DRES_BUY",
+        "linkedInShareUrl": "https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.rightmove.co.uk%2Fproperties%2F137808983%3Futm_campaign%3Dproperty-details%26utm_content%3Dbuying%26utm_medium%3Dsharing%26utm_source%3Dlinkedin%23%2F%26channel%3DRES_BUY",
+        "myRightmoveUrl": "//my.rightmove.co.uk",
+        "mediaServerUrl": "//media.rightmove.co.uk",
+        "serverTimestamp": 1715609677928,
+        "deviceType": "desktop",
+        "deviceTypeForLazyLoad": "desktop",
+        "deviceOS": "other",
+        "mvtInfo": [
+            {
+                "label": "GlobalSwitches.COOKIE_BANNER_IN_APP_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "GoogleTagManagerSwitch.GTM_THIRD_PARTY_TAG_SWITCH",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "GoogleTagManagerSwitch.GOOGLE_TAG_MANAGER_SWITCH",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "OnlineViewingsSwitches.ONLINE_VIEWING_PAGE_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.USE_PREFER_EMAIL_CLIENT_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.APP_DOWNLOAD_BANNER_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.DEVELOPMENT_INFO_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.STAMP_DUTY_CALCULATOR_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.AFFORDABILITY_WIDGET_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "ActSwitches.BFR_PRE_QUAL_FORM_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.BROADBAND_WIDGET_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.DT_BROADBAND_MPU_ENABLED",
+                "state": "off",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.UK_CREDIT_CHECK_SPONSORSHIP_AD_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.LOAD_GEO_EDGE_SCRIPT",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.CLICK_TO_SHOW_AGENT_NUMBER",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.ADDITIONAL_BROCHURE_LINK_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.MATERIAL_INFO_PHASE_B",
+                "state": "off",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.PROMOTE__NEW_SPOTLIGHT_ADL_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.ADD_ENQUIRY_BANNER_ENABLED",
+                "state": "on",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.AFFORDABILITY_WIDGET_LINK_EXPERIMENT",
+                "state": "off",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.PROMOTE__USE_PUBLIFT_THIRD_PARTY_ADS",
+                "state": "off",
+                "shouldLog": true
+            },
+            {
+                "label": "PropertyDetailsWeb.FORCE_GARBAGE_COLLECTION",
+                "state": "off",
+                "shouldLog": true
+            },
+            {
+                "label": "CookieBarSwitches.BLOCK_UNKNOWN_COOKIES",
+                "state": "off",
+                "shouldLog": true
+            },
+            {
+                "label": "CookieBarSwitches.ENABLE_ONE_TRUST_COOKIE_SCRIPT",
+                "state": "on",
+                "shouldLog": true
+            }
+        ],
+        "featureMvts": {
+            "PropertyDetailsWeb.BROADBAND_WIDGET_EXPERIMENT": "Variant_1"
+        },
+        "featureSwitches": {
+            "GlobalSwitches.COOKIE_BANNER_IN_APP_ENABLED": true,
+            "GoogleTagManagerSwitch.GTM_THIRD_PARTY_TAG_SWITCH": true,
+            "GoogleTagManagerSwitch.GOOGLE_TAG_MANAGER_SWITCH": true,
+            "OnlineViewingsSwitches.ONLINE_VIEWING_PAGE_ENABLED": true,
+            "PropertyDetailsWeb.USE_PREFER_EMAIL_CLIENT_ENABLED": true,
+            "PropertyDetailsWeb.APP_DOWNLOAD_BANNER_ENABLED": true,
+            "PropertyDetailsWeb.DEVELOPMENT_INFO_ENABLED": true,
+            "PropertyDetailsWeb.STAMP_DUTY_CALCULATOR_ENABLED": true,
+            "PropertyDetailsWeb.AFFORDABILITY_WIDGET_ENABLED": true,
+            "ActSwitches.BFR_PRE_QUAL_FORM_ENABLED": true,
+            "PropertyDetailsWeb.BROADBAND_WIDGET_ENABLED": true,
+            "PropertyDetailsWeb.DT_BROADBAND_MPU_ENABLED": false,
+            "PropertyDetailsWeb.UK_CREDIT_CHECK_SPONSORSHIP_AD_ENABLED": true,
+            "PropertyDetailsWeb.LOAD_GEO_EDGE_SCRIPT": true,
+            "PropertyDetailsWeb.CLICK_TO_SHOW_AGENT_NUMBER": true,
+            "PropertyDetailsWeb.ADDITIONAL_BROCHURE_LINK_ENABLED": true,
+            "PropertyDetailsWeb.MATERIAL_INFO_PHASE_B": false,
+            "PropertyDetailsWeb.PROMOTE__NEW_SPOTLIGHT_ADL_ENABLED": true,
+            "PropertyDetailsWeb.ADD_ENQUIRY_BANNER_ENABLED": true,
+            "PropertyDetailsWeb.AFFORDABILITY_WIDGET_LINK_EXPERIMENT": false,
+            "PropertyDetailsWeb.PROMOTE__USE_PUBLIFT_THIRD_PARTY_ADS": false,
+            "PropertyDetailsWeb.FORCE_GARBAGE_COLLECTION": false,
+            "CookieBarSwitches.BLOCK_UNKNOWN_COOKIES": false,
+            "CookieBarSwitches.ENABLE_ONE_TRUST_COOKIE_SCRIPT": true
+        },
+        "adUnitPath": {
+            "mpu1": "/5029762/Rightmove_Property_Details_Web/UK_Sales_MPU1",
+            "trackingPixel": "/5029762/Rightmove_Property_Details_Web/Tracking_Pixel",
+            "ukCreditCheckSponsorship": "/5029762/Rightmove_Property_Details_Web/UK_Sponsorship_Text-link_Property-Details",
+            "broadbandMpuPath": "/5029762/Rightmove_Property_Details_Web/UK_Sales_Broadband_MPU",
+            "broadbandMpuId": "div-gpt-ad-1700493755189-0"
+        },
+        "fuseId": {
+            "mpu1": "22037542557",
+            "trackingPixel": "22204611787",
+            "ukCreditCheckSponsorship": "22672514086",
+            "broadbandMpuId": "23024838235"
+        },
+        "backLink": {
+            "url": "",
+            "text": "",
+            "operation": 0
+        },
+        "shouldTrackGTMSuccessTracker": false,
+        "emailPreferences": {
+            "preferencesUrl": "//my.rightmove.co.uk",
+            "showModal": false,
+            "source": ""
+        },
+        "staticAssetsPath": "https://media.rightmove.co.uk/assets/a04c507a807f8bdd7543a397a71b0ac4",
+        "staticImagesAndFontsPath": "https://media.rightmove.co.uk/assets/a04c507a807f8bdd7543a397a71b0ac4",
+        "correlationId": "11055cf4-d9fb-404c-a7ae-0ca467da4e1d",
+        "locationSearchUrl": "//los.rightmove.co.uk",
+        "marketTrendsExperimentId": "",
+        "serveEs6Bundles": true
+    },
+    "isAuthenticated": true,
+    "analyticsInfo": {
+        "analyticsBranch": {
+            "agentType": "ea_dual",
+            "branchId": 58189,
+            "branchName": "Hatfield",
+            "branchPostcode": null,
+            "brandName": "Country Properties",
+            "companyName": "Hunters Property Group Ltd",
+            "companyTradingName": "Hunters",
+            "companyType": "corporate",
+            "displayAddress": "7 The Broadway,\r\nOld Hatfield,\r\nAL9 5BG",
+            "pageType": "Microsite"
+        },
+        "analyticsProperty": {
+            "added": "20230724",
+            "auctionOnly": false,
+            "beds": 1,
+            "businessForSale": false,
+            "country": "GB",
+            "currency": "GBP",
+            "floorplanCount": 1,
+            "furnishedType": "Not Specified",
+            "hasOnlineViewing": false,
+            "imageCount": 8,
+            "latitude": 51.761025,
+            "longitude": -0.214431,
+            "letAgreed": false,
+            "lettingType": "Long term",
+            "maxSizeAc": null,
+            "maxSizeFt": null,
+            "minSizeAc": null,
+            "minSizeFt": null,
+            "ownership": "Non-shared ownership",
+            "postcode": "AL9 5HX",
+            "preOwned": "Resale",
+            "price": 210000,
+            "priceQualifier": "None",
+            "propertyId": 137808983,
+            "propertySubType": "Apartment",
+            "propertyType": "Flats / Apartments",
+            "retirement": false,
+            "selectedCurrency": null,
+            "selectedPrice": null,
+            "soldSTC": false,
+            "videoProvider": "No Video",
+            "viewType": "Current",
+            "customUri": "https://www.rightmove.co.uk/property-for-sale/properties"
+        }
+    }
+}
