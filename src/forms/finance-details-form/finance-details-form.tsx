@@ -1,134 +1,67 @@
+import React from 'react'
 import {
   Avatar,
   Box,
   Button,
   Container,
+  Input,
   Stack,
   Typography,
+  useMediaQuery,
 } from '@mui/material'
+import { v4 as uuidv4 } from 'uuid'
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded'
 import { NestedInput } from './NestedInput'
-import React from 'react'
-
-const createSelectOptions = (start, end) => {
+import { useForm, FormProvider } from 'react-hook-form'
+import { FinanceDetails } from '@/pages/index'
+import { useAppState } from './localstorage'
+import { sortByProfitability } from '../../utils/calculate'
+const createSelectOptions = (start: number, end: number) => {
   const options = []
   for (let i = start; i <= end; i++) {
-    options.push({ value: i, label: i })
+    options.push({ value: `${i}`, label: `${i}` })
   }
   return options
 }
+type Props = {
+  setFinanceDetails: React.Dispatch<React.SetStateAction<FinanceDetails[]>>
+  setSteps: React.Dispatch<React.SetStateAction<number>>
+  steps: number
+}
 
-export const InputForm = () => {
-  const { properties, setProperties, results, setResults } = useAppState()
-  const [expandView, setExpandView] = React.useState({})
+export enum InputNodes {
+  Numeric = 'numeric',
+  Text = 'text',
+}
 
+export const InputForm = ({ setFinanceDetails, setSteps, steps }: Props) => {
   const methods = useForm({
     defaultValues: {
-      id: '',
-      propertyName: '',
-      propertyValue: '',
-      loan: '',
-      deposit: '',
-      monthlyOperatingCosts: '',
-      monthlyRentalIncome: '',
-      loanInterest: '',
-      repaymentPeriod: '',
+      deposit: '60000',
+      monthlyOperatingCosts: '100',
+      monthlyRentalIncome: '1200',
+      loanInterest: '3.7',
+      repaymentPeriod: '25',
       repaymentType: 'interestOnly',
-      mortgageTerm: 0,
-      url: '',
+      mortgageTerm: 5,
     },
   })
 
-  const { watch, setValue } = methods
-  const propertyValue = watch('propertyValue')
-  const deposit = watch('deposit')
-  React.useEffect(() => {
-    const loan = propertyValue - deposit
-    setValue('loan', loan)
-  }, [deposit, propertyValue, setValue])
-
-
-
   const addAnotherProperty = () => {
     methods.handleSubmit(onSubmit)()
+    setSteps(steps + 1)
   }
 
-  const onSubmit = (data) => {
-    // const id = uuidv4()
-    data.id = uuidv4()
-    console.log(data)
-    // const newProperty = { ...methods.getValues(), id }
-
-    setProperties((prevResults) => [...prevResults, data])
-    // methods.setValue('propertyName', `Property ${properties.length + 2}`)
+  const onSubmit = (data: any) => {
+    setFinanceDetails(data)
   }
 
-  React.useEffect(() => {
-    setOpen(false)
-    setResults(sortByProfitability(properties))
-  }, [properties, setResults])
-
-  const onDelete = (ids) => {
-    setResults((prevResults) =>
-      prevResults.filter((result) => !ids.includes(result.id)),
-    )
-    setProperties((prevResults) =>
-      prevResults.filter((result) => !ids.includes(result.id)),
-    )
-  }
-
-  const handleExpand = (event, id) => {
-    setExpandView(results.find((result) => result.id === id))
-  }
-
-  const closeView = () => {
-    setExpandView({})
-  }
-  const [open, setOpen] = React.useState(false)
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen)
-  }
-  const isSmallScreen = useMediaQuery('(max-width:600px)') // Adjust the breakpoint as needed
   const inputs = [
-    {
-      name: 'propertyName',
-      text: 'Property Name',
-      type: 'text',
-      inputMode: 'text',
-      component: 'input',
-      required: 'This field is required',
-    },
-    {
-      name: 'url',
-      text: 'URL',
-      type: 'text',
-      inputMode: 'text',
-      component: 'input',
-      required: 'This field is required',
-    },
-    {
-      name: 'propertyValue',
-      text: 'Value',
-      type: 'number',
-      inputMode: 'number',
-      component: 'input',
-      required: 'This field is required',
-    },
     {
       name: 'deposit',
       text: 'Deposit',
       type: 'number',
-      inputMode: 'number',
-      component: 'input',
-      required: 'This field is required',
-    },
-    {
-      name: 'loan',
-      text: 'Loan',
-      type: 'text',
-      inputMode: 'text',
-      disabled: true,
+      inputMode: InputNodes.Numeric,
       component: 'input',
       required: 'This field is required',
     },
@@ -137,7 +70,7 @@ export const InputForm = () => {
       name: 'monthlyOperatingCosts',
       text: 'Monthly Operating Costs',
       type: 'number',
-      inputMode: 'numeric',
+      inputMode: InputNodes.Numeric,
       component: 'input',
       required: 'This field is required',
     },
@@ -145,7 +78,7 @@ export const InputForm = () => {
       name: 'monthlyRentalIncome',
       text: 'Monthly Rental Income',
       type: 'number',
-      inputMode: 'numeric',
+      inputMode: InputNodes.Numeric,
       component: 'input',
       required: 'This field is required',
     },
@@ -153,7 +86,7 @@ export const InputForm = () => {
       name: 'loanInterest',
       text: 'Loan Interest',
       type: 'number',
-      inputMode: 'numeric',
+      inputMode: InputNodes.Numeric,
       component: 'input',
       required: 'This field is required',
     },
@@ -161,7 +94,7 @@ export const InputForm = () => {
       name: 'repaymentPeriod',
       text: 'Repayment Period',
       type: 'text',
-      inputMode: 'text',
+      inputMode: InputNodes.Text,
       component: 'select',
       required: 'This field is required',
       options: createSelectOptions(1, 30),
@@ -170,20 +103,20 @@ export const InputForm = () => {
       name: 'mortgageTerm',
       text: 'Mortgage term',
       type: 'text',
-      inputMode: 'text',
+      inputMode: InputNodes.Text,
       component: 'select',
       required: 'This field is required',
       options: [
-        { value: 2, label: '2' },
-        { value: 3, label: '3' },
-        { value: 5, label: '5' },
+        { value: '2', label: '2' },
+        { value: '3', label: '3' },
+        { value: '5', label: '5' },
       ],
     },
     {
       name: 'repaymentType',
       text: 'Repayment Type',
       type: 'text',
-      inputMode: 'text',
+      inputMode: InputNodes.Text,
       component: 'select',
       required: 'This field is required',
       options: [
@@ -193,7 +126,7 @@ export const InputForm = () => {
     },
   ]
   return (
-    <Container component="main" maxWidth="xs">
+    <FormProvider {...methods}>
       <Box
         sx={{
           marginTop: 2,
@@ -202,15 +135,16 @@ export const InputForm = () => {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <HouseRoundedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Add Property
-        </Typography>
         <Box component="div" sx={{ mt: 2 }}>
           {inputs.map((input) => (
-            <NestedInput key={input.name} {...input} />
+            <NestedInput
+              key={input.name}
+              {...input}
+              options={(input.options || []).map((option) => ({
+                value: option.value,
+                label: option.label,
+              }))}
+            />
           ))}
 
           <Stack direction="row" spacing={2}>
@@ -222,20 +156,11 @@ export const InputForm = () => {
               sx={{ mt: 3, mb: 2 }}
               onClick={addAnotherProperty}
             >
-              Add {properties?.length > 0 && properties?.length}
-            </Button>
-            <Button
-              disableElevation
-              size="small"
-              variant="outlined"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={toggleDrawer(false)}
-            >
-              Cancel
+              Add
             </Button>
           </Stack>
         </Box>
       </Box>
-    </Container>
+    </FormProvider>
   )
 }

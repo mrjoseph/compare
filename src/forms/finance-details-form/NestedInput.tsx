@@ -1,10 +1,23 @@
 import * as React from 'react'
 import TextField from '@mui/material/TextField'
-import { useFormContext, Controller } from 'react-hook-form'
+import { useFormContext, Controller, FieldValues } from 'react-hook-form'
 import { FormControl } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { InputLabel } from '@mui/material'
 import { Select } from '@mui/material'
+import { InputNodes } from './finance-details-form'
+
+type Props = {
+  name: string
+  text: string
+  type: string
+  inputMode: InputNodes
+  disabled?: boolean
+  required: string
+  component: string
+  options: Array<{ value: string; label: string }>
+}
+
 export const NestedInput = ({
   name,
   text,
@@ -14,16 +27,14 @@ export const NestedInput = ({
   required,
   component,
   options,
-}) => {
-  console.log('options', options)
-  const { control, register } = useFormContext() // retrieve all hook methods
+}: Props) => {
+  const { control, register } = useFormContext<FieldValues>() // retrieve all hook methods
 
   return (
     <Controller
       name={name}
       control={control}
-      render={(props) => {
-        const { field, formState } = props
+      render={({ field, formState }) => {
         switch (component) {
           case 'input':
             return (
@@ -31,7 +42,7 @@ export const NestedInput = ({
                 <TextField
                   error={formState.errors[name] ? true : false}
                   helperText={
-                    formState.errors[name] ? formState.errors[name].message : ''
+                    (formState?.errors[name]?.message as string) || ''
                   }
                   size="small"
                   label={text}
@@ -84,7 +95,7 @@ export const NestedInput = ({
               </FormControl>
             )
           default: {
-            return null
+            return <></>
           }
         }
       }}
