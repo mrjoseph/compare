@@ -53,3 +53,14 @@ export interface ResizedImageUrls {
   size476x317: string
   size656x437: string
 }
+
+export type Response = {
+  displayAddress: string
+  price: string
+  propertyType: string
+  url: string
+  images: images[]
+}
+export type images = {
+  url: string
+}

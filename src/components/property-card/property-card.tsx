@@ -8,14 +8,18 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import { ImageCarousel } from '../image-carousel/image-carousel'
-import { CalculatedPropertyResults } from '@/types'
+
 import NextLink from 'next/link' // Alias one of the imports as NextLink
 import { Grid, Link as MuiLink } from '@mui/material'
 import WorkIcon from '@mui/icons-material/Work'
 import { Avatar } from '@mui/material'
 import Hidden from '@mui/material/Hidden'
+
+import { CalculatedPropertyResults, Response } from '@/types'
+
+type CombinedProps = CalculatedPropertyResults & Response
 type Props = {
-  property: CalculatedPropertyResults
+  property: CombinedProps
   view: string
 }
 
