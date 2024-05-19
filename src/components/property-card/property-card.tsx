@@ -57,24 +57,6 @@ export const PropertyCard = ({ property, view }: Props) => {
 
         {view === 'summary' && (
           <Grid item xs={12} sm={12} md={8}>
-            {/* <List>
-              <ListItem>
-                <ListItemText
-                  secondary={
-                    <>
-                      <Typography
-                        variant="h5"
-                        color="text.primary"
-                        component="h4"
-                      >
-                        {property.displayAddress} {property.price}
-                      </Typography>
-                      <MuiLink href={property.url}>Rightmove</MuiLink>
-                    </>
-                  }
-                />
-              </ListItem>
-            </List> */}
             <Grid container spacing={0}>
               <Grid item xs={12} sm={4} md={4}>
                 <List>

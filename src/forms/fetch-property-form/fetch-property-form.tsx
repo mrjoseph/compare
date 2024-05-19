@@ -16,6 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { Response } from '@/pages/index'
 import { set } from 'react-hook-form'
 import { PropertyCard } from '@/components/property-card/property-card'
+import { PropertyCardPreview } from '@/components/property-card-preview/property-card-preview'
 
 type Props = {
   setPropertyDetails: React.Dispatch<React.SetStateAction<Response[]>>
@@ -70,7 +71,8 @@ export const FetchPropertyForm = ({
       {response && response.length > 0 ? (
         response.map((res, index) => (
           <Box key={index} sx={{ pt: 3 }}>
-            <PropertyCard property={res} view="fetch" />
+            
+            <PropertyCardPreview property={res} view="fetch" /> 
           </Box>
         ))
       ) : (

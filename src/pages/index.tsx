@@ -7,6 +7,7 @@ import { FetchPropertyForm } from '@/forms/fetch-property-form/fetch-property-fo
 import { InputForm } from '@/forms/finance-details-form/finance-details-form'
 import { sortByProfitability } from '@/utils/calculate'
 import { PropertyCard } from '@/components/property-card/property-card'
+import { CalculatedPropertyResults } from '@/types'
 
 type images = {
   url: string
@@ -81,6 +82,7 @@ const Home: NextPage = () => {
           <>
             <Typography variant="h5">Summary</Typography>
             {results.map((result) => {
+              // @ts-ignore
               return <PropertyCard property={result} key={result.id} view="summary"/>
             })}
           </>
