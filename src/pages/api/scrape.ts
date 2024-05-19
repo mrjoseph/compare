@@ -20,8 +20,8 @@ export default async function handler(
   await page.goto(req.query.url)
 
   const pageModel = await page.evaluate(() => {
-    // This code runs within the context of the browser page
-    return window.PAGE_MODEL // Accessing the window.PAGE_MODEL object
+    // @ts-ignore
+    return window.PAGE_MODEL
   })
 
   const {
