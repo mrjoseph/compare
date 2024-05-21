@@ -5,34 +5,48 @@ type images = {
   url: string
 }
 type ResponseData = {
-  price: string
-  displayAddress: string
-  propertyType: string
-  images: images[]
+  price?: string
+  displayAddress?: string
+  propertyType?: string
+  images?: images[]
+  error?:
+    | {
+        message: string
+      }
+    | undefined
 }
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
-  const browser = await puppeteer.launch()
-  const page = await browser.newPage()
-  await page.goto(req.query.url)
+  try {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.goto(req.query.url)
 
-  const pageModel = await page.evaluate(() => {
-    // @ts-ignore
-    return window.PAGE_MODEL
-  })
+    const pageModel = await page.evaluate(() => {
+      // @ts-ignore
+      return window.PAGE_MODEL
+    })
 
-  const {
-    analyticsInfo: { analyticsProperty },
-    propertyData: {
-      address: { displayAddress },
-      images,
-    },
-  } = pageModel
+    const {
+      analyticsInfo: { analyticsProperty },
+      propertyData: {
+        address: { displayAddress },
+        images,
+      },
+    } = pageModel
 
-  const { price, propertyType } = analyticsProperty
-  await browser.close()
-  res.status(200).json({ price, displayAddress, propertyType, images })
+    const { price, propertyType } = analyticsProperty
+    await browser.close()
+    res.status(200).json({ price, displayAddress, propertyType, images })
+  } catch (error) {
+    console.error('Error scraping property:', error)
+    res.status(500).json({
+      error: {
+        message: `'Error scraping property:', ${error}`,
+      },
+    })
+  }
 }

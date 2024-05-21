@@ -49,8 +49,6 @@ const Home: NextPage = () => {
       }
     })
 
-    console.log(results)
-    console.log(sortByProfitability(merged))
     setResults(sortByProfitability(merged))
   }, [propertyDetails, financeDetails])
   React.useEffect(() => {
@@ -83,7 +81,13 @@ const Home: NextPage = () => {
             <Typography variant="h5">Summary</Typography>
             {results.map((result) => {
               // @ts-ignore
-              return <PropertyCard property={result} key={result.id} view="summary"/>
+              return (
+                <PropertyCard
+                  property={result}
+                  key={result.id}
+                  view="summary"
+                />
+              )
             })}
           </>
         )
