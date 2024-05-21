@@ -49,8 +49,6 @@ const Home: NextPage = () => {
       }
     })
 
-    console.log(results)
-    console.log(sortByProfitability(merged))
     setResults(sortByProfitability(merged))
   }, [propertyDetails, financeDetails])
   React.useEffect(() => {

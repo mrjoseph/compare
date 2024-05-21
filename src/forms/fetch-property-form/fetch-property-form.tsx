@@ -51,7 +51,7 @@ export const FetchPropertyForm = ({
         setLoading(false)
       }
     } catch (error) {
-      console.error('Error fetching scraped data:', error)
+      console.error(error)
       setLoading(false)
     }
   }, [])
@@ -71,8 +71,7 @@ export const FetchPropertyForm = ({
       {response && response.length > 0 ? (
         response.map((res, index) => (
           <Box key={index} sx={{ pt: 3 }}>
-            
-            <PropertyCardPreview property={res} view="fetch" /> 
+            <PropertyCardPreview property={res} view="fetch" />
           </Box>
         ))
       ) : (
