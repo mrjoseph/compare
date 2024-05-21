@@ -78,7 +78,6 @@ const Home: NextPage = () => {
       default:
         return (
           <>
-            <Typography variant="h5">Summary</Typography>
             {results.map((result) => {
               // @ts-ignore
               return (
@@ -100,19 +99,21 @@ const Home: NextPage = () => {
           <HouseRoundedIcon />
         </Avatar>
       </Box>
-      <Typography
-        component="h1"
-        variant="h5"
-        sx={{ display: 'flex', justifyContent: 'center' }}
-      >
-        Buy to let comparison tool
-      </Typography>
-      <Typography
-        component="p"
-        sx={{ display: 'flex', justifyContent: 'center' }}
-      >
-        Copy and paste a Rightmove URL to get started
-      </Typography>
+      <Box margin={2}>
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{ display: 'flex', justifyContent: 'center' }}
+        >
+          Buy to let comparison tool
+        </Typography>
+        <Typography
+          component="p"
+          sx={{ display: 'flex', justifyContent: 'center' }}
+        >
+          Copy and paste a Rightmove URL to get started
+        </Typography>
+      </Box>
       {stepForm()}
     </Container>
   )
