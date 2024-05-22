@@ -37,7 +37,7 @@ export const PropertyCard = ({ property, view }: Props) => {
             direction="column"
             justifyContent="space-between"
             alignItems="flex-start"
-            padding={2}
+            padding={1}
             divider={<Divider />}
           >
             <Typography variant="h6" color="text.primary" component="p">
@@ -51,7 +51,7 @@ export const PropertyCard = ({ property, view }: Props) => {
 
         <Grid item xs={12} sm={12} md={8}>
           <Grid container spacing={0}>
-            <Grid item xs={4} sm={2} md={1} padding={2}>
+            <Grid item xs={4} sm={2} md={2} padding={1}>
               <Typography
                 variant="body1"
                 color="text.primary"
@@ -63,7 +63,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                 {property.monthlyRentalIncome}
               </Typography>
             </Grid>
-            <Grid item xs={4} sm={2} md={2} padding={2}>
+            <Grid item xs={4} sm={2} md={2} padding={1}>
               <Typography variant="body1" color="text.primary" component="p">
                 Repayment
               </Typography>
@@ -73,7 +73,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                   : 'Repayment'}
               </Typography>
             </Grid>
-            <Grid item xs={4} sm={2} md={2} padding={2}>
+            <Grid item xs={4} sm={2} md={2} padding={1}>
               <Typography variant="body1" color="text.primary" component="p">
                 Interest Rate
               </Typography>
@@ -81,7 +81,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                 {property.loanInterest}%
               </Typography>
             </Grid>
-            <Grid item xs={4} sm={2} md={2} padding={2}>
+            <Grid item xs={4} sm={2} md={2} padding={1}>
               <Typography variant="body1" color="text.primary" component="p">
                 Deposit
               </Typography>
@@ -89,7 +89,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                 {property.deposit}
               </Typography>
             </Grid>
-            <Grid item xs={4} sm={2} md={2} padding={2}>
+            <Grid item xs={4} sm={2} md={2} padding={1}>
               <Typography variant="body1" color="text.primary" component="p">
                 Loan
               </Typography>
@@ -97,7 +97,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                 {property.loan}
               </Typography>
             </Grid>
-            <Grid item xs={4} sm={2} md={3} padding={2}>
+            <Grid item xs={4} sm={2} md={2} padding={1}>
               <Typography variant="body1" color="text.primary" component="p">
                 Monthly costs
               </Typography>
