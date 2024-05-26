@@ -26,14 +26,17 @@ export default async function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   try {
-    const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath:
-        process.env.CHROME_EXECUTABLE_PATH ||
-        (await chromium.executablePath(
-          '/var/task/node_modules/@sparticuz/chromium/bin',
-        )),
+    // const browser = await puppeteer.launch({
+    //   args: chromium.args,
+    //   defaultViewport: chromium.defaultViewport,
+    //   executablePath:
+    //     process.env.CHROME_EXECUTABLE_PATH ||
+    //     (await chromium.executablePath(
+    //       '/var/task/node_modules/@sparticuz/chromium/bin',
+    //     )),
+    // })
+    const browser = await puppeteer.connect({
+      browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.BLESS_TOKEN}`,
     })
 
     const page = await browser.newPage()
