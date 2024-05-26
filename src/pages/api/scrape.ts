@@ -1,5 +1,6 @@
-const puppeteer = require('puppeteer')
-
+const chromium = require('chrome-aws-lambda')
+const puppeteer = require('puppeteer-core')
+require('dotenv').config()
 import type { NextApiRequest, NextApiResponse } from 'next'
 type images = {
   url: string
@@ -22,11 +23,22 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
-  try {
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.goto(req.query.url)
+  let browser
 
+  console.log(process.env.CHROME_EXECUTABLE_PATH)
+  try {
+    const executablePath =
+      process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath)
+
+    browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath,
+      headless: true,
+    })
+    const page = await browser.newPage()
+    await page.goto(req.query.url, { waitUntil: 'networkidle2' })
+    await page.waitForSelector('body')
     const pageModel = await page.evaluate(() => {
       // @ts-ignore
       return window.PAGE_MODEL

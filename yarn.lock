@@ -3749,6 +3749,13 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
+chrome-aws-lambda@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-10.1.0.tgz#ac43b4cdfc1fbb2275c62effada560858099501e"
+  integrity sha512-NZQVf+J4kqG4sVhRm3WNmOfzY0OtTSm+S8rg77pwePa9RCYHzhnzRs8YvNI6L9tALIW6RpmefWiPURt3vURXcw==
+  dependencies:
+    lambdafs "^2.0.3"
+
 chromium-bidi@0.5.19:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/chromium-bidi/-/chromium-bidi-0.5.19.tgz#e4f4951b7d9b20d668d6b387839f7b7bf2d69ef4"
@@ -4630,6 +4637,11 @@ devtools-protocol@0.0.1273771:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1273771.tgz#46aeb5db41417e2c2ad3d8367c598c975290b1a5"
   integrity sha512-QDbb27xcTVReQQW/GHJsdQqGKwYBE7re7gxehj467kKP2DKuYBUj6i2k5LRiAC66J1yZG/9gsxooz/s9pcm0Og==
 
+devtools-protocol@0.0.1286932:
+  version "0.0.1286932"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1286932.tgz#2303707034426fe0b39012713d4b7339f7dbc815"
+  integrity sha512-wu58HMQll9voDjR4NlPyoDEw1syfzaBNHymMMZ/QOXiHRNluOnDgu9hp1yHOKYoMlxCh4lSSiugLITe6Fvu1eA==
+
 diff-sequences@^29.6.3:
   version "29.6.3"
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-29.6.3.tgz#4deaf894d11407c51efc8418012f9e70b84ea921"
@@ -4718,7 +4730,7 @@ dot-prop@^6.0.1:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@16.4.5, dotenv@^16.3.1:
+dotenv@16.4.5, dotenv@^16.3.1, dotenv@^16.4.5:
   version "16.4.5"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.5.tgz#cdd3b3b604cb327e286b4762e13502f717cb099f"
   integrity sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==
@@ -7466,6 +7478,13 @@ lambda-local@2.2.0:
     dotenv "^16.3.1"
     winston "^3.10.0"
 
+lambdafs@^2.0.3:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/lambdafs/-/lambdafs-2.1.1.tgz#4bf8d3037b6c61bbb4a22ab05c73ee47964c25ed"
+  integrity sha512-x5k8JcoJWkWLvCVBzrl4pzvkEHSgSBqFjg3Dpsc4AcTMq7oUMym4cL/gRTZ6VM4mUMY+M0dIbQ+V1c1tsqqanQ==
+  dependencies:
+    tar-fs "^2.1.1"
+
 language-subtag-registry@^0.3.20:
   version "0.3.22"
   resolved "https://registry.yarnpkg.com/language-subtag-registry/-/language-subtag-registry-0.3.22.tgz#2e1500861b2e457eba7e7ae86877cbd08fa1fd1d"
@@ -9350,7 +9369,7 @@ pupa@^3.1.0:
   dependencies:
     escape-goat "^4.0.0"
 
-puppeteer-core@22.8.0, puppeteer-core@^22.8.0:
+puppeteer-core@22.8.0:
   version "22.8.0"
   resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-22.8.0.tgz#82c0e7ebf62ba5f34404394034e313b82014de5f"
   integrity sha512-S5bWx3g/fNuyFxjZX9TkZMN07CEH47+9Zm6IiTl1QfqI9pnVaShbwrD9kRe5vmz/XPp/jLGhhxRUj1sY4wObnA==
@@ -9359,6 +9378,17 @@ puppeteer-core@22.8.0, puppeteer-core@^22.8.0:
     chromium-bidi "0.5.19"
     debug "4.3.4"
     devtools-protocol "0.0.1273771"
+    ws "8.17.0"
+
+puppeteer-core@^22.10.0:
+  version "22.10.0"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-22.10.0.tgz#eef5735f90ed29e3b10815d142b3437e05939283"
+  integrity sha512-I54J4Vy4I07UHsgB1QSmuFoF7KNQjJWcvFBPhtY+ezMdBfwgGDr8dzYrJa11aPgP9kxIUHjhktcMmmfJkOAtTw==
+  dependencies:
+    "@puppeteer/browsers" "2.2.3"
+    chromium-bidi "0.5.19"
+    debug "4.3.4"
+    devtools-protocol "0.0.1286932"
     ws "8.17.0"
 
 puppeteer@^22.8.0:
@@ -10684,7 +10714,7 @@ tar-fs@3.0.5:
     bare-fs "^2.1.1"
     bare-path "^2.1.0"
 
-tar-fs@^2.0.0:
+tar-fs@^2.0.0, tar-fs@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.1.tgz#489a15ab85f1f0befabb370b7de4f9eb5cbe8784"
   integrity sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng==
