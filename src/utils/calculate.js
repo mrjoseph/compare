@@ -126,9 +126,23 @@ const calculateAverageAnnualROI = (property, ownershipDurationInYears) => {
   return ((annualNetProfit / totalInvestment) * 100) / ownershipDurationInYears
 }
 
+function covers125PercentOfMortgage(rentalIncome, monthlyMortgagePayment) {
+  // Calculate 125% of the monthly mortgage payment
+  const requiredIncome = monthlyMortgagePayment * 1.45
+
+  // Check if the rental income covers 125% of the mortgage payments
+  const covers125Percent = rentalIncome >= requiredIncome
+
+  return covers125Percent ? 'Yes' : 'No'
+}
+
 export const sortByProfitability = (properties) =>
   properties.map((property) => {
+    console.log(property)
     property.loan = property.price - property.deposit
+    property.yearlyOperatingCosts =
+      property.annualServiceCharge + property.annualGroundRent
+    property.monthlyOperatingCosts = property.yearlyOperatingCosts / 12
     const annualRentalIncome = property.monthlyRentalIncome * 12
     const rentalYield =
       calculateCashFlow(property) > 0
@@ -148,7 +162,7 @@ export const sortByProfitability = (properties) =>
     const ltv = calculateLTV(property)
     const averageAnnualROI = calculateAverageAnnualROI(property, 1)
     const stampDuty = calculateStampDuty(property.price)
-    console.log(property.monthlyRentalIncome)
+
     return {
       id: uuidv4(),
       ...property,
@@ -161,13 +175,22 @@ export const sortByProfitability = (properties) =>
       annualProfitPercentage,
       ltv,
       averageAnnualROI,
-      monthlyCashFlow: cashFlow / 12, // Monthly Cash Flow
-      yearlyCashFlow: cashFlow, // Yearly Cash Flow
+      monthlyCashFlow: `£${Math.floor(cashFlow / 12).toLocaleString()}`, // Monthly Cash Flow
+      yearlyCashFlow: `£${Math.floor(cashFlow).toLocaleString()}`, // Yearly Cash Flow
       stampDuty,
       totalInvestment: totalInvestment + stampDuty.STAMP_DUTY_TO_PAY,
       price: `£${property.price.toLocaleString()}`,
       monthlyRentalIncome: `£${parseInt(property.monthlyRentalIncome).toLocaleString()}`,
       deposit: `£${parseInt(property.deposit).toLocaleString()}`,
       loan: `£${parseInt(property.loan).toLocaleString()}`,
+      coverage: covers125PercentOfMortgage(
+        property.monthlyRentalIncome,
+        monthlyMortgage,
+      ),
+      monthlyOperatingCosts: `£${property.monthlyOperatingCosts.toLocaleString()}`,
+      yearlyOperatingCosts: `£${property.yearlyOperatingCosts.toLocaleString()}`,
     }
   })
+
+// annualServiceCharge?: number
+// annualGroundRent?: number

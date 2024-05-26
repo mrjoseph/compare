@@ -1,20 +1,17 @@
 import type { NextPage } from 'next'
 import React from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
 import { Avatar, Box, Button, Container, Typography } from '@mui/material'
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded'
 import { FetchPropertyForm } from '@/forms/fetch-property-form/fetch-property-form'
 import { InputForm } from '@/forms/finance-details-form/finance-details-form'
 import { sortByProfitability } from '@/utils/calculate'
 import { PropertyCard } from '@/components/property-card/property-card'
-import { Property } from '@/types'
 import { ResultsTable } from '@/components/results-table/results-table'
+import { PropertyPreviewCard } from '@/components/property-preview-card/property-preview-card'
+import { Response, FinanceDetails, Property } from '.'
 
-import { PropertyPreviewCards } from '@/components/preview-cards/previewCards'
-import { FinanceDetails, Response } from '@/types'
-
-const Home: NextPage = () => {
-  const [propertyDetails, setPropertyDetails] = React.useState<Property[]>([])
+export const Home: NextPage = () => {
+  const [propertyDetails, setPropertyDetails] = React.useState<Response[]>([])
   const [financeDetails, setFinanceDetails] = React.useState<FinanceDetails[]>(
     [],
   )
@@ -33,9 +30,16 @@ const Home: NextPage = () => {
       }
     })
 
+    //  console.log('merged', merged)
     setResults([...results, ...sortByProfitability(merged)])
   }, [propertyDetails, financeDetails, results])
 
+  // React.useEffect(() => {
+  //   if (propertyDetails) {
+  //     console.log('calculating', propertyDetails)
+  //     //    calculate()
+  //   }
+  // }, [propertyDetails, calculate])
   const onDelete = (id: string) => {}
   const handleExpand = (id: string) => {
     setSelectedProperty(id)
@@ -57,21 +61,26 @@ const Home: NextPage = () => {
             <FetchPropertyForm
               setPropertyDetails={setPropertyDetails}
               propertyDetails={propertyDetails}
+              steps={steps}
+              setSteps={setSteps}
             />
-
-            {propertyDetails && (
-              <PropertyPreviewCards
-                propertyDetails={propertyDetails}
-                setSteps={setSteps}
-                steps={steps}
-                calculate={calculate}
-              />
-            )}
+            {propertyDetails &&
+              propertyDetails.map((property, index) => {
+                return (
+                  <PropertyPreviewCard
+                    property={property}
+                    key={`${property.displayAddress}-${index}`}
+                  />
+                )
+              })}
           </>
         )
       case 2:
         return (
           <>
+            <Button onClick={calculate} variant="contained">
+              Calculate
+            </Button>{' '}
             {results.length > 0 && (
               <ResultsTable
                 results={results}
@@ -106,9 +115,11 @@ const Home: NextPage = () => {
         </Typography>
       </Box>
       {stepForm()}
-      <></>
+      <>
+        {selectedResults && (
+          <PropertyCard property={selectedResults} view="summary" />
+        )}
+      </>
     </Container>
   )
 }
-
-export default Home

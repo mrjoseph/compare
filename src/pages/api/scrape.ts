@@ -9,6 +9,8 @@ type ResponseData = {
   displayAddress?: string
   propertyType?: string
   images?: images[]
+  annualServiceCharge?: number
+  annualGroundRent?: number
   error?:
     | {
         message: string
@@ -35,12 +37,20 @@ export default async function handler(
       propertyData: {
         address: { displayAddress },
         images,
+        livingCosts: { annualServiceCharge, annualGroundRent },
       },
     } = pageModel
 
     const { price, propertyType } = analyticsProperty
     await browser.close()
-    res.status(200).json({ price, displayAddress, propertyType, images })
+    res.status(200).json({
+      price,
+      displayAddress,
+      propertyType,
+      images,
+      annualServiceCharge,
+      annualGroundRent,
+    })
   } catch (error) {
     console.error('Error scraping property:', error)
     res.status(500).json({

@@ -13,9 +13,10 @@ import { v4 as uuidv4 } from 'uuid'
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded'
 import { NestedInput } from './NestedInput'
 import { useForm, FormProvider } from 'react-hook-form'
-import { FinanceDetails } from '@/pages/index'
+
 import { useAppState } from './localstorage'
 import { sortByProfitability } from '../../utils/calculate'
+import { FinanceDetails } from '@/types'
 const createSelectOptions = (start: number, end: number) => {
   const options = []
   for (let i = start; i <= end; i++) {
@@ -38,8 +39,6 @@ export const InputForm = ({ setFinanceDetails, setSteps, steps }: Props) => {
   const methods = useForm({
     defaultValues: {
       deposit: '60000',
-      monthlyOperatingCosts: '100',
-      monthlyRentalIncome: '1200',
       loanInterest: '3.7',
       repaymentPeriod: '25',
       repaymentType: 'interestOnly',
@@ -53,30 +52,13 @@ export const InputForm = ({ setFinanceDetails, setSteps, steps }: Props) => {
   }
 
   const onSubmit = (data: any) => {
-    setFinanceDetails(data)
+    setFinanceDetails([data])
   }
 
   const inputs = [
     {
       name: 'deposit',
       text: 'Deposit',
-      type: 'number',
-      inputMode: InputNodes.Numeric,
-      component: 'input',
-      required: 'This field is required',
-    },
-
-    {
-      name: 'monthlyOperatingCosts',
-      text: 'Monthly Operating Costs',
-      type: 'number',
-      inputMode: InputNodes.Numeric,
-      component: 'input',
-      required: 'This field is required',
-    },
-    {
-      name: 'monthlyRentalIncome',
-      text: 'Monthly Rental Income',
       type: 'number',
       inputMode: InputNodes.Numeric,
       component: 'input',

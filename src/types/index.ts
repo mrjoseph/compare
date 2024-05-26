@@ -60,7 +60,27 @@ export type Response = {
   propertyType: string
   url: string
   images: images[]
+  annualServiceCharge?: number
+  annualGroundRent?: number
 }
 export type images = {
   url: string
 }
+
+export enum InputNodes {
+  Numeric = 'numeric',
+  Text = 'text',
+}
+
+export type FinanceDetails = {
+  id: string
+  deposit: string
+  monthlyRentalIncome: string
+  // monthlyOperatingCosts: string
+  loanInterest: string
+  repaymentPeriod: string
+  repaymentType: string
+  mortgageTerm: string
+}
+
+export type Property = Response & FinanceDetails

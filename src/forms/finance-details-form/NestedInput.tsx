@@ -1,7 +1,7 @@
 import * as React from 'react'
 import TextField from '@mui/material/TextField'
 import { useFormContext, Controller, FieldValues } from 'react-hook-form'
-import { FormControl } from '@mui/material'
+import { CircularProgress, FormControl, InputAdornment } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import { InputLabel } from '@mui/material'
 import { Select } from '@mui/material'
@@ -15,7 +15,9 @@ type Props = {
   disabled?: boolean
   required: string
   component: string
-  options: Array<{ value: string; label: string }>
+  options?: Array<{ value: string; label: string }>
+  loading?: boolean
+  async?: boolean
 }
 
 export const NestedInput = ({
@@ -27,6 +29,8 @@ export const NestedInput = ({
   required,
   component,
   options,
+  loading,
+  async,
 }: Props) => {
   const { control, register } = useFormContext<FieldValues>() // retrieve all hook methods
 
@@ -58,6 +62,19 @@ export const NestedInput = ({
                   id={name}
                   type={type}
                   required
+                  InputProps={
+                    async
+                      ? {
+                          startAdornment: loading && (
+                            <InputAdornment position="start">
+                              {loading && (
+                                <CircularProgress color="success" size={20} />
+                              )}
+                            </InputAdornment>
+                          ),
+                        }
+                      : {}
+                  }
                 />
               </FormControl>
             )
@@ -86,7 +103,7 @@ export const NestedInput = ({
                   required
                   {...field}
                 >
-                  {options.map((option) => (
+                  {options?.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
                     </MenuItem>
