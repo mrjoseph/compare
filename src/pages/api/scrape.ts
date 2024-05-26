@@ -1,6 +1,11 @@
-const puppeteer = require('puppeteer')
+import chromium from '@sparticuz/chromium'
+import puppeteer from 'puppeteer-core'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+chromium.setHeadlessMode = true
+chromium.setGraphicsMode = false
+
 type images = {
   url: string
 }
@@ -22,8 +27,12 @@ export default async function handler(
 ) {
   try {
     const browser = await puppeteer.launch({
-      headless: 'new',
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath('/var/task/node_modules/@sparticuz/chromium/bin')),
     })
+
+    
     const page = await browser.newPage()
     await page.goto(req.query.url)
 
