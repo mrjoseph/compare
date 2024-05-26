@@ -21,9 +21,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   try {
-    const browser = await puppeteer.launch({
-      headless: 'new',
-    })
+    const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(req.query.url)
 
