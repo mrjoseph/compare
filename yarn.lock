@@ -2065,13 +2065,13 @@
   dependencies:
     escape-string-regexp "^5.0.0"
 
-"@sparticuz/chromium@119.0.2":
-  version "119.0.2"
-  resolved "https://registry.yarnpkg.com/@sparticuz/chromium/-/chromium-119.0.2.tgz#cbdf57fb99ba04d8136059004f5cae1d225cf3ae"
-  integrity sha512-VB6tHW13YpQ7HqyhKG1KU8Z1RIb/kfHMg8j/4ft5rk8mMvEm2YkBYFCHnj+yb0P/RPLcdgX3+VC58GuJilOtww==
+"@sparticuz/chromium@110":
+  version "110.0.1"
+  resolved "https://registry.yarnpkg.com/@sparticuz/chromium/-/chromium-110.0.1.tgz#8351fc92861adbc7ae613f7fe69f1f0f0520b6fe"
+  integrity sha512-LS7GKGoHSNUK2ugRp2k9/Rb+wSjsqPDTQTWd9nM2d2hCgm78WRLx2Vw+xwl3bst3M4+dqfawpx1UObUmt5vVYQ==
   dependencies:
-    follow-redirects "^1.15.3"
-    tar-fs "^3.0.4"
+    follow-redirects "^1.15.2"
+    tar-fs "^2.1.1"
 
 "@swc/helpers@0.5.2":
   version "0.5.2"
@@ -5946,7 +5946,7 @@ folder-walker@3.2.0:
   dependencies:
     from2 "^2.1.0"
 
-follow-redirects@^1.0.0, follow-redirects@^1.15.3, follow-redirects@^1.15.6:
+follow-redirects@^1.0.0, follow-redirects@^1.15.2, follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==

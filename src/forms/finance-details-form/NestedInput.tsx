@@ -8,6 +8,7 @@ import { Select } from '@mui/material'
 import { InputNodes } from './finance-details-form'
 
 type Props = {
+  defaultValue?: string | number
   name: string
   text: string
   type: string
@@ -21,6 +22,7 @@ type Props = {
 }
 
 export const NestedInput = ({
+  defaultValue,
   name,
   text,
   type,
@@ -33,10 +35,13 @@ export const NestedInput = ({
   async,
 }: Props) => {
   const { control, register } = useFormContext<FieldValues>() // retrieve all hook methods
-
+  const [state, setState] = React.useState<string | number>(
+    defaultValue || '' || 0,
+  ) // state for the input field
   return (
     <Controller
       name={name}
+      defaultValue={defaultValue || '' || 0}
       control={control}
       render={({ field, formState }) => {
         switch (component) {

@@ -47,8 +47,12 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0])
 }
 const styleSx = { display: { xs: 'none', sm: 'none', md: 'table-cell' } }
-const styleSxSm = { display: { xs: 'none', sm: 'table-cell', md: 'table-cell' } }
-const styleSxLg = { display: { xs: 'none', sm: 'none', md: 'none',  lg: 'table-cell'} }
+const styleSxSm = {
+  display: { xs: 'none', sm: 'table-cell', md: 'table-cell' },
+}
+const styleSxLg = {
+  display: { xs: 'none', sm: 'none', md: 'none', lg: 'table-cell' },
+}
 const headCells = [
   {
     id: 'propertyName',
@@ -262,11 +266,7 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
           onDelete={onDelete}
         />
         <TableContainer>
-          <Table
-           
-            aria-labelledby="tableTitle"
-            size={'large'}
-          >
+          <Table aria-labelledby="tableTitle" size={'large'}>
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}
@@ -283,6 +283,7 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                 return (
                   <>
                     <TableRow
+                      k
                       hover
                       onClick={() => {
                         setOpen((prev) => {
@@ -337,7 +338,9 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                         {row.annualRentalIncome}
                       </TableCell>
 
-                      <TableCell align="left" sx={styleSxSm}>{row.rentalYield}%</TableCell>
+                      <TableCell align="left" sx={styleSxSm}>
+                        {row.rentalYield}%
+                      </TableCell>
                       <TableCell align="right" sx={styleSxLg}>
                         {row.monthlyCashFlow}
                       </TableCell>

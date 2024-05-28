@@ -13,7 +13,7 @@ import { Container } from '@mui/material'
 import axios from 'axios'
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded'
 import CircularProgress from '@mui/material/CircularProgress'
-import { Property, Response } from '@/types'
+import { Property } from '@/types'
 import { Controller, set } from 'react-hook-form'
 import { PropertyCard } from '@/components/property-card/property-card'
 import { PropertyCardPreview } from '@/components/property-card-preview/property-card-preview'
@@ -21,12 +21,27 @@ import { ResultsTable } from '@/components/results-table/results-table'
 import { useForm, FormProvider, useWatch } from 'react-hook-form'
 import { InputNodes } from '@/types'
 import { NestedInput } from '../finance-details-form/NestedInput'
+
+type Response = {
+  images: {
+    url: string
+  }[]
+}
+
 type Props = {
   setPropertyDetails: React.Dispatch<React.SetStateAction<Property[]>>
   propertyDetails: Response[]
 }
 
-const inputs = [
+const defaultInputs = [
+  {
+    name: 'monthlyRentalIncome',
+    text: 'Monthly Rental Income',
+    type: 'number',
+    inputMode: InputNodes.Numeric,
+    component: 'input',
+    required: 'This field is required',
+  },
   {
     name: 'url',
     text: 'url',
@@ -35,22 +50,6 @@ const inputs = [
     component: 'input',
     required: 'This field is required',
     async: true,
-  },
-  // {
-  //   name: 'monthlyOperatingCosts',
-  //   text: 'Monthly Operating Costs',
-  //   type: 'number',
-  //   inputMode: InputNodes.Numeric,
-  //   component: 'input',
-  //   required: 'This field is required',
-  // },
-  {
-    name: 'monthlyRentalIncome',
-    text: 'Monthly Rental Income',
-    type: 'number',
-    inputMode: InputNodes.Numeric,
-    component: 'input',
-    required: 'This field is required',
   },
 ]
 export const FetchPropertyForm = ({
@@ -66,6 +65,7 @@ export const FetchPropertyForm = ({
   })
   const [response, setResponse] = React.useState<Response[]>([])
   const [url, setUrl] = React.useState<string>('')
+  const [inputs, setInputs] = React.useState<any>(defaultInputs)
   const [loading, setLoading] = React.useState<boolean>(false)
   const [disabled, setDisabled] = React.useState<boolean>(false)
   const urlValues = useWatch({
@@ -91,7 +91,30 @@ export const FetchPropertyForm = ({
         },
       })
       if (results.data) {
-        // return results.data
+        console.log(results.data)
+        // remove images from inputs
+        const newInputs = {
+          price: results.data.price,
+          displayAddress: results.data.displayAddress,
+          propertyType: results.data.propertyType,
+          annualServiceCharge: results.data.annualServiceCharge,
+          annualGroundRent: results.data.annualGroundRent,
+        }
+        setInputs([
+          ...defaultInputs,
+          ...Object.keys(newInputs).map((key) => {
+            console.log(results.data[key])
+            return {
+              defaultValue: results.data[key],
+              name: key,
+              text: key,
+              type: 'text',
+              inputMode: InputNodes.Text,
+              component: 'input',
+              required: 'This field is required',
+            }
+          }),
+        ])
         setResponse({ ...results.data, url })
         setUrl('')
         setLoading(false)
@@ -105,30 +128,16 @@ export const FetchPropertyForm = ({
     if (urlValues.length > 0) fetchData(urlValues)
   }, [urlValues, fetchData])
 
-  // React.useEffect(() => {
-  //   setPropertyDetails(response)
-  // }, [response, setPropertyDetails])
-
   const onAdd = async (data: any) => {
-    // try {
-    //   setLoading(true)
-    //   const response = await fetchData(url)
-    //   if (response) {
-    //     setLoading(false)
-    //     setUrl('')
     const property = { ...response, ...data }
-
+    console.log(property)
     setPropertyDetails([...propertyDetails, property])
     methods.reset()
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    setInputs(defaultInputs)
   }
 
   const addProperty = () => {
     methods.handleSubmit(onAdd)()
-    // clear the form
   }
 
   return (

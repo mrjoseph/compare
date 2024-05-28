@@ -23,7 +23,7 @@ export const PropertyPreviewCards = ({
   }
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justifyContent="center" alignItems="center">
         {propertyDetails.map((property, index) => {
           return (
             <Grid
@@ -40,17 +40,19 @@ export const PropertyPreviewCards = ({
         })}
       </Grid>
       {propertyDetails.length > 0 && (
-        <Button
-          disableElevation
-          disabled={propertyDetails.length === 0 ? true : false}
-          size="small"
-          type="submit"
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-          onClick={next}
-        >
-          Next
-        </Button>
+        <Box alignContent="center" justifyContent='center' display="flex">
+          <Button
+            disableElevation
+            disabled={propertyDetails.length === 0 ? true : false}
+            size="small"
+            type="submit"
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={next}
+          >
+            Next
+          </Button>
+        </Box>
       )}
     </>
   )
