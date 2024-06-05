@@ -2,6 +2,10 @@ import chromium from '@sparticuz/chromium'
 import puppeteer from 'puppeteer-core'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+chromium.setHeadlessMode = true
+chromium.setGraphicsMode = false
+
 type images = {
   url: string
 }
@@ -26,10 +30,10 @@ export default async function handler(
   try {
     const browser = await puppeteer.launch({
       args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(
-        '/var/task/node_modules/@sparticuz/chromium/bin',
-      ),
+      defaultViewport: { width: 800, height: 600 },
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+      ignoreHTTPSErrors: true,
     })
 
     const page = await browser.newPage()
