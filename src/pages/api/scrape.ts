@@ -1,4 +1,5 @@
-const puppeteer = require('puppeteer')
+import chromium from '@sparticuz/chromium'
+import puppeteer from 'puppeteer-core'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 type images = {
@@ -24,10 +25,17 @@ export default async function handler(
 ) {
   try {
     const browser = await puppeteer.launch({
-      headless: 'new',
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath:
+        process.env.CHROME_EXECUTABLE_PATH ||
+        (await chromium.executablePath(
+          '/var/task/node_modules/@sparticuz/chromium/bin',
+        )),
     })
+
     const page = await browser.newPage()
-    await page.goto(req.query.url)
+    await page.goto(req.query.url as string)
 
     const pageModel = await page.evaluate(() => {
       // @ts-ignore
