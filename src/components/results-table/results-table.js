@@ -61,10 +61,10 @@ const headCells = [
     label: 'Property Name',
   },
   {
-    id: 'annualRentalIncome',
+    id: 'price',
     numeric: false,
     disablePadding: true,
-    label: 'Rent(Y)',
+    label: 'price',
     style: styleSxLg,
   },
   {
@@ -281,9 +281,8 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                 const labelId = `enhanced-table-checkbox-${index}`
 
                 return (
-                  <>
+                  <React.Fragment key={`row-${index}-${row.id}`}>
                     <TableRow
-                      k
                       hover
                       onClick={() => {
                         setOpen((prev) => {
@@ -295,7 +294,6 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={`row-${index}-${row.id}`}
                       selected={isItemSelected}
                       sx={{ cursor: 'pointer', position: 'relative' }}
                     >
@@ -335,7 +333,7 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                         padding="none"
                         sx={styleSxLg}
                       >
-                        {row.annualRentalIncome}
+                        {row.price}
                       </TableCell>
 
                       <TableCell align="left" sx={styleSxSm}>
@@ -357,7 +355,7 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                         {row.profitAfterExpensesYearly}
                       </TableCell>
                       <TableCell align="right" sx={styleSxSm}>
-                        {Math.floor(row.ltv)}%
+                        {Math.floor(row.ltv)}% 
                       </TableCell>
 
                       <TableCell align="right" sx={styleSxLg}>
@@ -377,7 +375,7 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                         </Collapse>
                       </TableCell>
                     </TableRow>
-                  </>
+                  </React.Fragment>
                 )
               })}
               {emptyRows > 0 && (

@@ -83,4 +83,7 @@ export type FinanceDetails = {
   mortgageTerm: string
 }
 
+export type Obj = {
+  [key: string]: string
+}
 export type Property = Response & FinanceDetails

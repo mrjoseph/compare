@@ -16,7 +16,7 @@ export const PropertyPreviewCards = ({
   setSteps,
   calculate,
 }: Props) => {
-  console.log(propertyDetails)
+
   const next = () => {
     calculate && calculate()
     setSteps && steps && setSteps(steps + 1)

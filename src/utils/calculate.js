@@ -38,11 +38,6 @@ function calculateStampDuty(amount) {
     })
   }
 
-  // // Format the result
-  // const formattedTax = tax.toLocaleString('en-GB', {
-  //   style: 'currency',
-  //   currency: 'GBP',
-  // })
 
   // Calculate effective rate
   const effectiveRate = (tax / amount) * 100
@@ -138,11 +133,13 @@ function covers125PercentOfMortgage(rentalIncome, monthlyMortgagePayment) {
 
 export const sortByProfitability = (properties) =>
   properties.map((property) => {
-    console.log(property)
     property.loan = property.price - property.deposit
+
     property.yearlyOperatingCosts =
       property.annualServiceCharge + property.annualGroundRent
-    property.monthlyOperatingCosts = property.yearlyOperatingCosts / 12
+    property.monthlyOperatingCosts = Math.round(
+      property.yearlyOperatingCosts / 12,
+    )
     const annualRentalIncome = property.monthlyRentalIncome * 12
     const rentalYield =
       calculateCashFlow(property) > 0
@@ -191,6 +188,3 @@ export const sortByProfitability = (properties) =>
       yearlyOperatingCosts: `£${property.yearlyOperatingCosts.toLocaleString()}`,
     }
   })
-
-// annualServiceCharge?: number
-// annualGroundRent?: number

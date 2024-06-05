@@ -175,7 +175,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                   primary="Loan to value (LTV)"
                   secondary={`${Math.floor(property.ltv)}%`}
                 />
-                {property.ltv <= 75 ? <DoneIcon color="success" /> : 'no'}
+                {Math.floor(property.ltv) <= 75 ? <DoneIcon color="success" /> : 'no'}
               </ListItem>
             </List>
           </Grid>

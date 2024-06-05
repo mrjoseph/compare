@@ -21,6 +21,7 @@ import { ResultsTable } from '@/components/results-table/results-table'
 import { useForm, FormProvider, useWatch } from 'react-hook-form'
 import { InputNodes } from '@/types'
 import { NestedInput } from '../finance-details-form/NestedInput'
+import { parse } from 'path'
 
 type Response = {
   images: {
@@ -58,7 +59,6 @@ export const FetchPropertyForm = ({
 }: Props) => {
   const methods = useForm({
     defaultValues: {
-      monthlyOperatingCosts: '',
       monthlyRentalIncome: '',
       url: '',
     },
@@ -91,7 +91,6 @@ export const FetchPropertyForm = ({
         },
       })
       if (results.data) {
-        console.log(results.data)
         // remove images from inputs
         const newInputs = {
           price: results.data.price,
@@ -103,13 +102,13 @@ export const FetchPropertyForm = ({
         setInputs([
           ...defaultInputs,
           ...Object.keys(newInputs).map((key) => {
-            console.log(results.data[key])
             return {
               defaultValue: results.data[key],
               name: key,
               text: key,
-              type: 'text',
-              inputMode: InputNodes.Text,
+              type: key === 'price' ? 'number' : 'text',
+              // if keu is price, set inputMode to numeric
+              inputMode: key === 'price' ? InputNodes.Numeric : InputNodes.Text,
               component: 'input',
               required: 'This field is required',
             }
@@ -129,7 +128,15 @@ export const FetchPropertyForm = ({
   }, [urlValues, fetchData])
 
   const onAdd = async (data: any) => {
-    const property = { ...response, ...data }
+    const property = {
+      ...response,
+      ...{
+        ...data,
+        price: parseInt(data.price),
+        annualServiceCharge: parseInt(data.annualServiceCharge),
+        annualGroundRent: parseInt(data.annualGroundRent),
+      },
+    }
     console.log(property)
     setPropertyDetails([...propertyDetails, property])
     methods.reset()
@@ -144,7 +151,7 @@ export const FetchPropertyForm = ({
     <FormProvider {...methods}>
       <Container maxWidth="sm">
         <Box>
-          {inputs.map((input) => (
+          {inputs.map((input: any) => (
             <NestedInput key={input.name} {...input} loading={loading} />
           ))}
           <Box
@@ -153,6 +160,7 @@ export const FetchPropertyForm = ({
             }}
           >
             <Button
+              disabled={response.length === 0}
               disableElevation
               size="small"
               type="submit"
