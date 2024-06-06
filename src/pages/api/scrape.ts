@@ -1,11 +1,6 @@
-import chromium from '@sparticuz/chromium'
-import puppeteer from 'puppeteer-core'
-// const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer')
+
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-chromium.setHeadlessMode = true
-chromium.setGraphicsMode = false
-
 type images = {
   url: string
 }
@@ -14,8 +9,6 @@ type ResponseData = {
   displayAddress?: string
   propertyType?: string
   images?: images[]
-  annualServiceCharge?: number
-  annualGroundRent?: number
   error?:
     | {
         message: string
@@ -29,20 +22,10 @@ export default async function handler(
 ) {
   try {
     const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath:
-        process.env.CHROME_EXECUTABLE_PATH ||
-        (await chromium.executablePath(
-          '/var/task/node_modules/@sparticuz/chromium/bin',
-        )),
-      //executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath()),
+      headless: 'new',
     })
-
-    // const browser = await puppeteer.launch()
-
     const page = await browser.newPage()
-    await page.goto(req.query.url as string)
+    await page.goto(req.query.url)
 
     const pageModel = await page.evaluate(() => {
       // @ts-ignore
@@ -54,21 +37,12 @@ export default async function handler(
       propertyData: {
         address: { displayAddress },
         images,
-        annualServiceCharge,
-        annualGroundRent,
       },
     } = pageModel
 
     const { price, propertyType } = analyticsProperty
     await browser.close()
-    res.status(200).json({
-      price,
-      displayAddress,
-      propertyType,
-      images,
-      annualServiceCharge: annualServiceCharge ? annualServiceCharge : 0,
-      annualGroundRent: annualGroundRent ? annualGroundRent : 0,
-    })
+    res.status(200).json({ price, displayAddress, propertyType, images })
   } catch (error) {
     console.error('Error scraping property:', error)
     res.status(500).json({
