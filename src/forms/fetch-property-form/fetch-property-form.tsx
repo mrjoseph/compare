@@ -14,14 +14,13 @@ import axios from 'axios'
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded'
 import CircularProgress from '@mui/material/CircularProgress'
 import { Property } from '@/types'
-import { Controller, set } from 'react-hook-form'
 import { PropertyCard } from '@/components/property-card/property-card'
 import { PropertyCardPreview } from '@/components/property-card-preview/property-card-preview'
 import { ResultsTable } from '@/components/results-table/results-table'
 import { useForm, FormProvider, useWatch } from 'react-hook-form'
 import { InputNodes } from '@/types'
 import { NestedInput } from '../finance-details-form/NestedInput'
-import { parse } from 'path'
+
 
 type Response = {
   images: {
