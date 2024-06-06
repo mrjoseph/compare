@@ -1,6 +1,11 @@
-const puppeteer = require('puppeteer')
-
+import chromium from '@sparticuz/chromium'
+import puppeteer from 'puppeteer';
+// const puppeteer = require('puppeteer')
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+chromium.setHeadlessMode = true
+chromium.setGraphicsMode = false
+
 type images = {
   url: string
 }
@@ -9,6 +14,8 @@ type ResponseData = {
   displayAddress?: string
   propertyType?: string
   images?: images[]
+  annualServiceCharge?: number
+  annualGroundRent?: number
   error?:
     | {
         message: string
@@ -21,11 +28,12 @@ export default async function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   try {
-    const browser = await puppeteer.launch({
-      headless: 'new',
-    })
+    const browser = await puppeteer.launch();
+
+    // const browser = await puppeteer.launch()
+
     const page = await browser.newPage()
-    await page.goto(req.query.url)
+    await page.goto(req.query.url as string)
 
     const pageModel = await page.evaluate(() => {
       // @ts-ignore
@@ -37,12 +45,21 @@ export default async function handler(
       propertyData: {
         address: { displayAddress },
         images,
+        annualServiceCharge,
+        annualGroundRent,
       },
     } = pageModel
 
     const { price, propertyType } = analyticsProperty
     await browser.close()
-    res.status(200).json({ price, displayAddress, propertyType, images })
+    res.status(200).json({
+      price,
+      displayAddress,
+      propertyType,
+      images,
+      annualServiceCharge: annualServiceCharge ? annualServiceCharge : 0,
+      annualGroundRent: annualGroundRent ? annualGroundRent : 0,
+    })
   } catch (error) {
     console.error('Error scraping property:', error)
     res.status(500).json({
