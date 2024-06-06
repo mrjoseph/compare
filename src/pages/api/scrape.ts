@@ -28,7 +28,12 @@ export default async function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      // executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
 
     // const browser = await puppeteer.launch()
 
