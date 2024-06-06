@@ -3,8 +3,8 @@ import puppeteer from 'puppeteer-core'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-chromium.setHeadlessMode = true
-chromium.setGraphicsMode = false
+// chromium.setHeadlessMode = true
+// chromium.setGraphicsMode = false
 
 type images = {
   url: string
