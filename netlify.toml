@@ -1,8 +1,8 @@
-# example netlify.toml
-
-[dev]
-  autoLaunch = false
+[build]
+  command = "npm run build && npm install --arch=x64 --platform=linux @sparticuz/chromium"
+  publish = "out"
+  functions = "out_functions"
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["@sparticuz/chromium"]
+  external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]

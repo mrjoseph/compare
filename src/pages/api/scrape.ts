@@ -31,11 +31,9 @@ export default async function handler(
     const browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
+      //  executablePath: process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath('/var/task/node_modules/@sparticuz/chromium/bin')),
       executablePath:
-        process.env.CHROME_EXECUTABLE_PATH ||
-        (await chromium.executablePath(
-          '/var/task/node_modules/@sparticuz/chromium/bin',
-        )),
+        process.env.CHROME_EXECUTABLE_PATH || (await chromium.executablePath()),
     })
 
     // const browser = await puppeteer.launch()
