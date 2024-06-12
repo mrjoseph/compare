@@ -2,6 +2,7 @@ import { Header } from '@/components/header/header'
 import { ResultsTable } from '@/components/results-table/results-table'
 import { useStateContext } from '@/state/stateContext'
 import { CalculatedPropertyResults } from '@/types'
+import { sortByProfitability } from '@/utils/calculate'
 import { Container } from '@mui/material'
 import type { NextPage } from 'next'
 import React from 'react'
@@ -11,7 +12,8 @@ const Results: NextPage = () => {
   React.useEffect(() => {
     const results = JSON.parse(localStorage.getItem('results') || '[]') || []
     if (results.length > 0) {
-      setState(results)
+      const calculated = sortByProfitability(results)
+      setState(calculated)
     }
   }, [])
 

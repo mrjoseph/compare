@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography'
 import { ImageCarousel } from '../image-carousel/image-carousel'
 import DoneIcon from '@mui/icons-material/Done'
 import NextLink from 'next/link' // Alias one of the imports as NextLink
-import { Divider, Grid, Link as MuiLink, Stack } from '@mui/material'
+import { Divider, Grid, Link, Link as MuiLink, Stack } from '@mui/material'
 import WorkIcon from '@mui/icons-material/Work'
 import { Avatar } from '@mui/material'
 import Hidden from '@mui/material/Hidden'
@@ -50,7 +50,7 @@ export const PropertyCard = ({ property, view }: Props) => {
 
       <Grid item xs={12} sm={12} md={8}>
         <Grid container spacing={0}>
-          <Grid item xs={12} sm={6} md={1} padding={2}>
+          <Grid item xs={12} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="strong">
               Rent
             </Typography>
@@ -58,7 +58,12 @@ export const PropertyCard = ({ property, view }: Props) => {
               {property.monthlyRentalIncome}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} md={2} padding={2}>
+          <Grid item xs={12} sm={6} md={4} padding={2}>
+            <Link href={`${property.url}`} target="blank">
+              Link
+            </Link>
+          </Grid>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
               Repayment
             </Typography>
@@ -68,7 +73,7 @@ export const PropertyCard = ({ property, view }: Props) => {
                 : 'Repayment'}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} md={2} padding={2}>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
               Interest Rate
             </Typography>
@@ -76,7 +81,7 @@ export const PropertyCard = ({ property, view }: Props) => {
               {property.loanInterest}%
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} md={2} padding={2}>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
               Deposit
             </Typography>
@@ -84,7 +89,7 @@ export const PropertyCard = ({ property, view }: Props) => {
               {property.deposit}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} md={2} padding={2}>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
               Loan
             </Typography>
@@ -92,12 +97,38 @@ export const PropertyCard = ({ property, view }: Props) => {
               {property.loan}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} md={3} padding={2}>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
               Monthly costs
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
               {property.monthlyOperatingCosts}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
+            <Typography variant="body1" color="text.primary" component="p">
+              Stamp Duty 
+            </Typography>
+            <Typography variant="body2" color="text.secondary" component="p">
+
+              {`£${property.stampDuty.STAMP_DUTY_TO_PAY.toLocaleString()}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
+            <Typography variant="body1" color="text.primary" component="p">
+              Mortgage fee
+            </Typography>
+            <Typography variant="body2" color="text.secondary" component="p">
+
+              {`£${property.setupFees}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
+            <Typography variant="body1" color="text.primary" component="p">
+              Profit over mortage term of {property.mortgageTerm} years
+            </Typography>
+            <Typography variant="body2" color="text.secondary" component="p">
+              {property.totalProfitAfterSetupFees}
             </Typography>
           </Grid>
         </Grid>
@@ -175,7 +206,11 @@ export const PropertyCard = ({ property, view }: Props) => {
                   primary="Loan to value (LTV)"
                   secondary={`${Math.floor(property.ltv)}%`}
                 />
-                {Math.floor(property.ltv) <= 75 ? <DoneIcon color="success" /> : 'no'}
+                {Math.floor(property.ltv) <= 75 ? (
+                  <DoneIcon color="success" />
+                ) : (
+                  'no'
+                )}
               </ListItem>
             </List>
           </Grid>

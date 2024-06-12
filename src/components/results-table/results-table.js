@@ -19,6 +19,7 @@ import IconButton from '@mui/material/IconButton'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { PropertyCard } from '../property-card/property-card'
+import Button from '@mui/material/Button'
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1
@@ -130,6 +131,13 @@ const headCells = [
     label: 'Coverage 145%',
     style: styleSxSm,
   },
+  {
+    id: 'edit',
+    numeric: true,
+    disablePadding: false,
+    label: 'edit',
+    style: styleSxSm,
+  },
 ]
 //averageAnnualROI
 function EnhancedTableHead(props) {
@@ -213,6 +221,10 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
 
   const onDelete = () => {
     handleDelete(selected)
+  }
+  const onEdit = (e, id) => {
+    e.stopPropagation()
+    console.log('edit', id)
   }
 
   const handleClick = (event, id) => {
@@ -355,7 +367,7 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                         {row.profitAfterExpensesYearly}
                       </TableCell>
                       <TableCell align="right" sx={styleSxSm}>
-                        {Math.floor(row.ltv)}% 
+                        {Math.floor(row.ltv)}%
                       </TableCell>
 
                       <TableCell align="right" sx={styleSxLg}>
@@ -364,11 +376,15 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                       <TableCell align="right" sx={styleSxSm}>
                         {row.coverage}
                       </TableCell>
+
+                      <TableCell align="right" sx={styleSxLg}>
+                        <Button onClick={(e) => onEdit(e, row.id)}>edit</Button>
+                      </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell
                         style={{ paddingBottom: 0, paddingTop: 0 }}
-                        colSpan={12}
+                        colSpan={13}
                       >
                         <Collapse in={open[index]} timeout="auto">
                           <PropertyCard property={row} view="summary" />

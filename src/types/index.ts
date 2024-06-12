@@ -27,6 +27,7 @@ export interface CalculatedPropertyResults {
   repaymentPeriod: string
   repaymentType: string
   mortgageTerm: number
+  totalProfitAfterSetupFees: number
   loan: number
 }
 

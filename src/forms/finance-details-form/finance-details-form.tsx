@@ -106,6 +106,14 @@ export const InputForm = ({ setFinanceDetails, setSteps, steps }: Props) => {
         { value: 'repayment', label: 'Repayment' },
       ],
     },
+    {
+      name: 'setupFees',
+      text: 'Setup Fees',
+      type: 'number',
+      inputMode: InputNodes.Numeric,
+      component: 'input',
+      required: 'This field is required',
+    },
   ]
   return (
     <FormProvider {...methods}>

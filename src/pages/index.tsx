@@ -28,10 +28,10 @@ const Home: NextPage = () => {
         ...financeDetails[0],
       }
     })
-    console.log('merged', merged)
-    setResults([...results, ...sortByProfitability(merged)])
-  }, [propertyDetails, financeDetails, results])
 
+    setResults([...results, ...merged])
+  }, [propertyDetails, financeDetails, results])
+  console.log('results', results)
   React.useEffect(() => {
     if (steps === 2 && results.length > 0) {
       setState({ ...state, results })

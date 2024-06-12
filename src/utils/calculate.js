@@ -1,7 +1,7 @@
 import { parse } from 'path'
 import { v4 as uuidv4 } from 'uuid'
+
 function calculateStampDuty(amount) {
-  // Stamp duty bands and rates
   const bands = [
     { upperLimit: 250000, rate: 0.03 },
     { upperLimit: 925000, rate: 0.08 },
@@ -9,12 +9,10 @@ function calculateStampDuty(amount) {
     { upperLimit: Infinity, rate: 0.15 },
   ]
 
-  // Initialize variables
   let tax = 0
   let taxableSum = amount
   const bandTaxes = []
 
-  // Calculate stamp duty
   for (const band of bands) {
     if (taxableSum <= 0) {
       break
@@ -38,17 +36,12 @@ function calculateStampDuty(amount) {
     })
   }
 
-
-  // Calculate effective rate
   const effectiveRate = (tax / amount) * 100
-
-  // Format the taxable sum
   const formattedAmount = amount.toLocaleString('en-GB', {
     style: 'currency',
     currency: 'GBP',
   })
 
-  // Return the result
   return {
     STAMP_DUTY_TO_PAY: tax,
     Effective_Rate: `${effectiveRate.toFixed(1)}%`,
@@ -80,26 +73,38 @@ const calculateMonthlyMortgage = (property) => {
   return monthlyMortgage
 }
 
-const calculateProfitAfterExpenses = (property, ownershipDurationInYears) => {
+const calculateProfitAfterExpenses = (property, mortgageTerm, stampDuty) => {
   const monthlyCashFlow = calculateCashFlow(property) / 12
   const monthlyMortgage = calculateMonthlyMortgage(property)
   const monthlyProfitAfterExpenses = monthlyCashFlow - monthlyMortgage
-  const yearlyProfitAfterExpenses = monthlyProfitAfterExpenses * 12
 
-  // Calculate the total investment
+  // Distribute setup fees over the mortgage term
+  const monthlySetupFee = parseFloat(property.setupFees) / (mortgageTerm * 12)
+  const yearlySetupFee = parseFloat(property.setupFees) / mortgageTerm
+  console.log(monthlySetupFee)
+  // Add setup fees to monthly and yearly profit
+  const adjustedMonthlyProfitAfterExpenses =
+    monthlyProfitAfterExpenses - monthlySetupFee
+  const adjustedYearlyProfitAfterExpenses =
+    adjustedMonthlyProfitAfterExpenses * 12
+
   const totalInvestment =
     parseFloat(property.deposit) +
-    parseFloat(property.monthlyOperatingCosts) * 12
+    parseFloat(property.monthlyOperatingCosts) * 12 * mortgageTerm +
+    parseFloat(property.setupFees) // Include setup fees in total investment
 
-  // Calculate the annual profit as a percentage of the total investment
+  const totalProfitAfterSetupFees =
+    adjustedYearlyProfitAfterExpenses * mortgageTerm // Calculate total profit after setup fees over the mortgage term
+
   const annualProfitPercentage =
-    (yearlyProfitAfterExpenses / totalInvestment) * 100
+    (adjustedYearlyProfitAfterExpenses / totalInvestment) * 100
 
   return {
     totalInvestment,
-    monthly: monthlyProfitAfterExpenses,
-    yearly: yearlyProfitAfterExpenses,
+    monthly: adjustedMonthlyProfitAfterExpenses,
+    yearly: adjustedYearlyProfitAfterExpenses,
     annualProfitPercentage: annualProfitPercentage.toFixed(2) + '%',
+    totalProfitAfterSetupFees: totalProfitAfterSetupFees.toFixed(2),
   }
 }
 
@@ -122,17 +127,13 @@ const calculateAverageAnnualROI = (property, ownershipDurationInYears) => {
 }
 
 function covers125PercentOfMortgage(rentalIncome, monthlyMortgagePayment) {
-  // Calculate 125% of the monthly mortgage payment
   const requiredIncome = monthlyMortgagePayment * 1.45
-
-  // Check if the rental income covers 125% of the mortgage payments
   const covers125Percent = rentalIncome >= requiredIncome
-
   return covers125Percent ? 'Yes' : 'No'
 }
 
-export const sortByProfitability = (properties) =>
-  properties.map((property) => {
+export const sortByProfitability = (properties) => {
+  return properties.map((property) => {
     property.loan = property.price - property.deposit
 
     property.yearlyOperatingCosts =
@@ -147,19 +148,24 @@ export const sortByProfitability = (properties) =>
         : 0
     const cashFlow = calculateCashFlow(property)
     const monthlyMortgage = calculateMonthlyMortgage(property)
+    const stampDuty = calculateStampDuty(property.price)
     const {
       monthly: profitAfterExpensesMonthly,
       yearly: profitAfterExpensesYearly,
       annualProfitPercentage,
       totalInvestment,
+      totalProfitAfterSetupFees,
     } = calculateProfitAfterExpenses(
       property,
       parseInt(property.mortgageTerm, 10),
+      stampDuty.STAMP_DUTY_TO_PAY,
     )
     const ltv = calculateLTV(property)
-    const averageAnnualROI = calculateAverageAnnualROI(property, 1)
-    const stampDuty = calculateStampDuty(property.price)
-
+    const averageAnnualROI = calculateAverageAnnualROI(
+      property,
+      property.mortgageTerm,
+    )
+    console.log(stampDuty.STAMP_DUTY_TO_PAY)
     return {
       id: uuidv4(),
       ...property,
@@ -186,5 +192,7 @@ export const sortByProfitability = (properties) =>
       ),
       monthlyOperatingCosts: `£${property.monthlyOperatingCosts.toLocaleString()}`,
       yearlyOperatingCosts: `£${property.yearlyOperatingCosts.toLocaleString()}`,
+      totalProfitAfterSetupFees: `£${totalProfitAfterSetupFees.toLocaleString()}`,
     }
   })
+}
