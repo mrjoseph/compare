@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { useRouter } from 'next/router'
 import { Container } from '@mui/material'
 import { FetchPropertyForm } from '@/forms/fetch-property-form/fetch-property-form'
 import { InputForm } from '@/forms/finance-details-form/finance-details-form'
-import { sortByProfitability } from '@/utils/calculate'
 import { Property } from '@/types'
 import { PropertyPreviewCards } from '@/components/preview-cards/previewCards'
 import { FinanceDetails } from '@/types'
@@ -22,19 +22,19 @@ const Home: NextPage = () => {
   const [results, setResults] = React.useState<Property[]>([])
 
   const calculate = React.useCallback(() => {
-    const merged = propertyDetails.map((property) => {
-      return {
-        ...property,
-        ...financeDetails[0],
-      }
-    })
+    const merged = propertyDetails.map((property) => ({
+      id: uuidv4(),
+      ...property,
+      ...financeDetails[0],
+    }))
 
     setResults([...results, ...merged])
   }, [propertyDetails, financeDetails, results])
-  console.log('results', results)
+
   React.useEffect(() => {
     if (steps === 2 && results.length > 0) {
-      setState({ ...state, results })
+      console.log('results', results)
+      setState(results)
       router.push('/results')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

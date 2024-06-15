@@ -14,13 +14,13 @@ interface State {
 
 // Define the type for the context value
 interface StateContextType {
-  state: State
-  setState: React.Dispatch<React.SetStateAction<State>>
+  state: State[]
+  setState: (newState: State[]) => void
 }
 
 // Create the context with a default value
 const StateContext = createContext<StateContextType | undefined>({
-  state: {},
+  state: [],
   setState: () => {},
 })
 
@@ -29,21 +29,25 @@ interface StateProviderProps {
 }
 
 export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
-  const [state, setState] = useState<State>({ results: [] })
+  const [state, setState] = useState<State[]>([])
 
+  const setGlobalState = (newState: State[]) => {
+    setState([...newState])
+  }
 
+  const getGlobalState = () => {
+    return JSON.parse(localStorage.getItem('results') || '[]') || []
+  }
 
   useEffect(() => {
     const results = JSON.parse(localStorage.getItem('results') || '[]') || []
-    // check the ids of the results and only add the new ones
-    const newResults = state.results.filter(
-      (result: any) => !results.some((r: any) => r.id === result.id),
-    )
-    localStorage.setItem('results', JSON.stringify([...results, ...newResults]))
-    
-  }, [state.results])
+
+    localStorage.setItem('results', JSON.stringify([...results, ...state]))
+  }, [state])
   return (
-    <StateContext.Provider value={{ state, setState }}>
+    <StateContext.Provider
+      value={{ state: getGlobalState, setState: setGlobalState }}
+    >
       {children}
     </StateContext.Provider>
   )

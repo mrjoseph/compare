@@ -107,20 +107,18 @@ export const PropertyCard = ({ property, view }: Props) => {
           </Grid>
           <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
-              Stamp Duty 
+              Stamp Duty
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-
               {`£${property.stampDuty.STAMP_DUTY_TO_PAY.toLocaleString()}`}
             </Typography>
           </Grid>
           <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
-              Mortgage fee
+              Setup fees
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-
-              {`£${property.setupFees}`}
+              {`£${property.setupFees.toLocaleString()}`}
             </Typography>
           </Grid>
           <Grid item xs={6} sm={6} md={4} padding={2}>
@@ -129,6 +127,14 @@ export const PropertyCard = ({ property, view }: Props) => {
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
               {property.totalProfitAfterSetupFees}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} sm={6} md={6} padding={2}>
+            <Typography variant="body1" color="text.primary" component="p">
+              Profit over mortage term of {property.mortgageTerm} years - Stamp Duty
+            </Typography>
+            <Typography variant="body2" color="text.secondary" component="p">
+              {property.totalProfitAfterSetupFeesAndStampDuty}
             </Typography>
           </Grid>
         </Grid>
