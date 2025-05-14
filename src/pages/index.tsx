@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   const calculate = React.useCallback(() => {
     const merged = propertyDetails.map((property) => ({
       id: uuidv4(),
-      ...property,
+      ...property, 
       ...financeDetails[0],
     }))
 

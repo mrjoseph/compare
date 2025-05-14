@@ -22,6 +22,8 @@ const Results: NextPage = () => {
   const handleExpand = (id: string) => {
     setSelectedProperty(id)
   }
+
+  console.log(state)
   return (
     <Container maxWidth="xl" sx={{ pt: 3 }}>
       <Header />

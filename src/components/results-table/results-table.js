@@ -96,20 +96,20 @@ const headCells = [
     label: 'Mortgage(M)',
     style: styleSx,
   },
-  {
-    id: 'profitAfterExpensesMonthly',
-    numeric: true,
-    disablePadding: false,
-    label: 'Profit(M)',
-    style: styleSx,
-  },
-  {
-    id: 'profitAfterExpensesYearly',
-    numeric: true,
-    disablePadding: false,
-    label: 'Profit(Y)',
-    style: styleSx,
-  },
+  // {
+  //   id: 'profitAfterExpensesMonthly',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Profit(M)',
+  //   style: styleSx,
+  // },
+  // {
+  //   id: 'profitAfterExpensesYearly',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Profit(Y)',
+  //   style: styleSx,
+  // },
   {
     id: 'ltv',
     numeric: true,
@@ -360,12 +360,12 @@ export const ResultsTable = ({ results, handleDelete, handleExpand }) => {
                       <TableCell align="right" sx={styleSx}>
                         £{Math.floor(row.monthlyMortgage)}
                       </TableCell>
-                      <TableCell align="right" sx={styleSx}>
+                      {/* <TableCell align="right" sx={styleSx}>
                         £{Math.floor(row.profitAfterExpensesMonthly)}
-                      </TableCell>
-                      <TableCell align="right" sx={styleSx}>
+                      </TableCell> */}
+                      {/* <TableCell align="right" sx={styleSx}>
                         {row.profitAfterExpensesYearly}
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell align="right" sx={styleSxSm}>
                         {Math.floor(row.ltv)}%
                       </TableCell>

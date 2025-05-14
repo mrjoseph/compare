@@ -51,115 +51,65 @@ const calculateMonthlyMortgage = (property) => {
   const monthlyInterestRate = property.loanInterest / 100 / 12
   const numberOfPayments = property.repaymentPeriod * 12
 
-  const monthlyMortgage =
-    property.repaymentType === 'interestOnly'
-      ? property.loan * monthlyInterestRate
-      : (property.loan * monthlyInterestRate) /
-        (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments))
+  let monthlyMortgage
+
+  if (property.repaymentType === 'interestOnly') {
+    monthlyMortgage = property.loan * monthlyInterestRate
+  } else if (property.repaymentType === 'repayment') {
+    monthlyMortgage =
+      (property.loan * monthlyInterestRate) /
+      (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments))
+  } else {
+    throw new Error(`Unsupported repayment type: ${property.repaymentType}`)
+  }
 
   return monthlyMortgage
 }
 
-const calculateCashFlow = (property, mortgageTerm, stampDuty) => {
-  // Ensure property.price is a number
-  const price = parseFloat(property.price)
-  const monthlyRentalIncome = parseFloat(property.monthlyRentalIncome)
-  const setupFees = parseFloat(property.setupFees)
-  const parsedStampDuty = parseFloat(stampDuty)
-  const parsedMortgageTerm = parseFloat(mortgageTerm)
+const calculateCashFlow = (
+  mortgageTerm,
+  stampDuty,
+  setupFees,
+  monthlyRentalIncome,
+  monthlyMortgage,
+  deposit,
+) => {
+  // Calculate gross rent
+  const annualRent = monthlyRentalIncome * 12
 
-  // Ensure values are valid numbers
-  if (
-    isNaN(price) ||
-    isNaN(monthlyRentalIncome) ||
-    isNaN(setupFees) ||
-    isNaN(parsedStampDuty) ||
-    isNaN(parsedMortgageTerm)
-  ) {
-    return NaN
-  }
-
-  const grossRent = monthlyRentalIncome * 12
-
-  // Distribute setup fees and stamp duty over the mortgage term
-  const yearlySetupFees = setupFees / parsedMortgageTerm
-  const yearlyStampDuty = parsedStampDuty / parsedMortgageTerm
+  // Distribute setup fees and stamp duty over one year
+  const yearlySetupFees = setupFees / mortgageTerm / 12
+  const yearlyStampDuty = stampDuty / mortgageTerm / 12
   const yearlyAmortizedCosts = yearlySetupFees + yearlyStampDuty
 
-  // Calculate 50% of gross rent as operating expenses
-  const estimatedOperatingExpenses = grossRent * 0.5 + yearlyAmortizedCosts
-
   // Calculate the annual mortgage principal and interest
-  const monthlyMortgage = calculateMonthlyMortgage(property)
   const annualMortgagePAndI = monthlyMortgage * 12
 
   // Calculate net cash flow
-  const netCashFlow =
-    grossRent - estimatedOperatingExpenses - annualMortgagePAndI
+  const netYearlyCashFlow =
+    annualRent - annualMortgagePAndI - yearlyAmortizedCosts
 
-  return netCashFlow
-}
+  // Calculate monthly and term cash flows
+  const netMonthlyCashFlow = netYearlyCashFlow / 12
+  const netCashFlowOverTerm = netYearlyCashFlow * mortgageTerm
 
-const calculateProfitAfterExpenses = (property, mortgageTerm, stampDuty) => {
-  const yearlyCashFlow = calculateCashFlow(property, mortgageTerm, stampDuty)
-  const monthlyCashFlow = yearlyCashFlow / 12
+  // Calculate cash flow over mortgage term minus stamp duty
+  const netCashFlowOverTermMinusStampDuty = netCashFlowOverTerm - stampDuty
 
-  const monthlyMortgage = calculateMonthlyMortgage(property)
-  const monthlyProfitAfterExpenses = monthlyCashFlow - monthlyMortgage
-
-  // Distribute setup fees over the mortgage term
-  const monthlySetupFee =
-    parseFloat(property.setupFees) / (parseFloat(mortgageTerm) * 12)
-  const adjustedMonthlyProfitAfterExpenses =
-    monthlyProfitAfterExpenses - monthlySetupFee
-  const adjustedYearlyProfitAfterExpenses =
-    adjustedMonthlyProfitAfterExpenses * 12
-
-  const totalInvestment =
-    parseFloat(property.deposit) +
-    parseFloat(property.monthlyOperatingCosts) * 12 * parseFloat(mortgageTerm) +
-    parseFloat(property.setupFees)
-
-  const totalProfitAfterSetupFees =
-    adjustedYearlyProfitAfterExpenses * parseFloat(mortgageTerm)
-  const totalProfitAfterSetupFeesAndStampDuty =
-    totalProfitAfterSetupFees - parseFloat(stampDuty)
-  const annualProfitPercentage =
-    (adjustedYearlyProfitAfterExpenses / totalInvestment) * 100
-
+  // calculate the percentage margin
+  const percentageMargin = (netYearlyCashFlow / (deposit / mortgageTerm)) * 100
   return {
-    totalInvestment,
-    monthly: adjustedMonthlyProfitAfterExpenses,
-    yearly: adjustedYearlyProfitAfterExpenses,
-    annualProfitPercentage: annualProfitPercentage.toFixed(2) + '%',
-    totalProfitAfterSetupFees: totalProfitAfterSetupFees.toFixed(2),
-    totalProfitAfterSetupFeesAndStampDuty:
-      totalProfitAfterSetupFeesAndStampDuty.toFixed(2),
+    monthlyCashFlow: netMonthlyCashFlow,
+    yearlyCashFlow: netYearlyCashFlow,
+    cashFlowOverMortgageTerm: netCashFlowOverTerm,
+    cashFlowOverMortgageTermMinusStampDuty: netCashFlowOverTermMinusStampDuty,
+    percentageMargin,
   }
 }
 
 const calculateLTV = (property) => (property.loan / property.price) * 100
 
-const calculateAverageAnnualROI = (
-  property,
-  ownershipDurationInYears,
-  stampDuty,
-) => {
-  const annualNetProfit =
-    calculateCashFlow(property, ownershipDurationInYears, stampDuty) -
-    property.loanInterest * property.loan
-  const totalInvestment =
-    property.price -
-    property.loan +
-    property.deposit +
-    property.monthlyOperatingCosts * ownershipDurationInYears
-
-  if (totalInvestment === 0 || ownershipDurationInYears === 0) {
-    return 0
-  }
-
-  return ((annualNetProfit / totalInvestment) * 100) / ownershipDurationInYears
-}
+const calculateROI = (investment, profit) => (profit / investment) * 100
 
 function covers125PercentOfMortgage(rentalIncome, monthlyMortgagePayment) {
   const requiredIncome = monthlyMortgagePayment * 1.45
@@ -177,95 +127,61 @@ export const sortByProfitability = (properties) => {
     property.monthlyOperatingCosts = Math.round(
       property.yearlyOperatingCosts / 12,
     )
-    const annualRentalIncome = property.monthlyRentalIncome * 12
+
+    // Ensure monthlyRentalIncome is a number
+    const monthlyRentalIncome = parseFloat(property.monthlyRentalIncome)
+    const annualRentalIncome = monthlyRentalIncome * 12
     const rentalYield = (annualRentalIncome / property.price) * 100
-    const monthlyRentalIncome = `£${parseInt(property.monthlyRentalIncome).toLocaleString()}`
-    const loan = `£${parseInt(property.loan).toLocaleString()}`
-    const deposit = `£${parseInt(property.deposit).toLocaleString()}`
-    const monthlyOperatingCosts = `£${property.monthlyOperatingCosts.toLocaleString()}`
+
     const ltv = calculateLTV(property)
     const monthlyMortgage = calculateMonthlyMortgage(property)
-    // const cashFlow = calculateCashFlow(
-    //   property,
-    //   property.mortgageTerm,
-    //   stampDuty.STAMP_DUTY_TO_PAY,
-    // )
 
+    // Pass numeric values to calculateCashFlow
+    const cashFlow = calculateCashFlow(
+      property.mortgageTerm,
+      stampDuty.STAMP_DUTY_TO_PAY,
+      property.setupFees,
+      monthlyRentalIncome,
+      monthlyMortgage,
+      property.deposit,
+    )
 
+    const totalInvestment =
+    parseFloat(property.deposit) +
+    parseFloat(property.setupFees) +
+    parseFloat(stampDuty.STAMP_DUTY_TO_PAY)
+    const totalRoi = calculateROI(
+      totalInvestment,
+      cashFlow.cashFlowOverMortgageTerm,
+    )
+    const annualROI = calculateROI(totalInvestment, cashFlow.yearlyCashFlow)
 
-    // const {
-    //   monthly: profitAfterExpensesMonthly,
-    //   yearly: profitAfterExpensesYearly,
-    //   annualProfitPercentage,
-    //   totalInvestment,
-    //   totalProfitAfterSetupFees,
-    //   totalProfitAfterSetupFeesAndStampDuty,
-    // } = calculateProfitAfterExpenses(
-    //   property,
-    //   parseInt(property.mortgageTerm, 10),
-    //   stampDuty.STAMP_DUTY_TO_PAY,
-    // )
-
-    // const averageAnnualROI = calculateAverageAnnualROI(
-    //   property,
-    //   property.mortgageTerm,
-    //   stampDuty.STAMP_DUTY_TO_PAY,
-    // )
     const coverage = covers125PercentOfMortgage(
-      property.monthlyRentalIncome,
+      monthlyRentalIncome,
       monthlyMortgage,
     )
+
     return {
       ...property,
-      // annualRentalIncome: `£${annualRentalIncome.toLocaleString()}`,
-      // rentalYield: rentalYield.toFixed(1),
-      // cashFlow,
-      // monthlyMortgage,
-      // profitAfterExpensesMonthly,
-      // profitAfterExpensesYearly: `£${profitAfterExpensesYearly.toLocaleString()}`,
-      // annualProfitPercentage,
-      // ltv,
-      // coverage,
-      // // stampDuty,
-      // loan: `£${parseInt(property.loan).toLocaleString()}`,
-      // deposit: `£${parseInt(property.deposit).toLocaleString()}`,
-      // monthlyRentalIncome: `£${parseInt(property.monthlyRentalIncome).toLocaleString()}`,
-      // averageAnnualROI,
-      // monthlyCashFlow: `£${Math.floor(cashFlow / 12).toLocaleString()}`, // Monthly Cash Flow
-      // yearlyCashFlow: `£${Math.floor(cashFlow).toLocaleString()}`, // Yearly Cash Flow
-      // totalInvestment: totalInvestment,
-      // // price: `£${property.price.toLocaleString()}`,
-
-      //
-      // yearlyOperatingCosts: `£${property.yearlyOperatingCosts.toLocaleString()}`,
-      // totalProfitAfterSetupFees: `£${totalProfitAfterSetupFees.toLocaleString()}`,
-      // totalProfitAfterSetupFeesAndStampDuty: `£${totalProfitAfterSetupFeesAndStampDuty.toLocaleString()}`,
-
       stampDuty,
       price: `£${property.price.toLocaleString()}`,
       ltv,
       annualRentalIncome: `£${annualRentalIncome.toLocaleString()}`,
       rentalYield: rentalYield.toFixed(1),
-      loan,
-      deposit,
+      loan: `£${property.loan.toLocaleString()}`,
+      deposit: `£${property.deposit.toLocaleString()}`,
       monthlyMortgage,
       coverage,
-      monthlyRentalIncome,
-      monthlyOperatingCosts,
-
-      cashFlow: '',
-      profitAfterExpensesMonthly: '',
-      profitAfterExpensesYearly: '',
-      annualProfitPercentage: '',
-
-      averageAnnualROI: '',
-      monthlyCashFlow: '',
-      yearlyCashFlow: '',
-      totalInvestment: '',
-
-      yearlyOperatingCosts: '',
-      totalProfitAfterSetupFees: '',
-      totalProfitAfterSetupFeesAndStampDuty: '',
+      monthlyRentalIncome: `£${monthlyRentalIncome.toLocaleString()}`,
+      monthlyOperatingCosts: `£${property.monthlyOperatingCosts.toLocaleString()}`,
+      monthlyCashFlow: `£${Math.floor(cashFlow.monthlyCashFlow).toLocaleString()}`,
+      yearlyCashFlow: `£${Math.floor(cashFlow.yearlyCashFlow).toLocaleString()}`,
+      cashFlowOverMortgageTerm: `£${Math.floor(cashFlow.cashFlowOverMortgageTerm).toLocaleString()}`,
+      cashFlowOverMortgageTermMinusStampDuty: `£${Math.floor(cashFlow.cashFlowOverMortgageTermMinusStampDuty).toLocaleString()}`,
+      annualProfitPercentage: cashFlow.percentageMargin.toFixed(1) + '%',
+      totalROI: `${totalRoi.toFixed(1)}%`,
+      annualROI: `${annualROI.toFixed(1)}%`,
+      totalInvestment: `£${Math.floor(totalInvestment).toLocaleString()}`,
     }
   })
 }

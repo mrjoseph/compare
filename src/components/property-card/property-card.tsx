@@ -14,7 +14,7 @@ import { Divider, Grid, Link, Link as MuiLink, Stack } from '@mui/material'
 import WorkIcon from '@mui/icons-material/Work'
 import { Avatar } from '@mui/material'
 import Hidden from '@mui/material/Hidden'
-
+import BasicModal from '../modal/modal'
 import { CalculatedPropertyResults } from '@/types'
 
 type Props = {
@@ -26,6 +26,13 @@ export const PropertyCard = ({ property, view }: Props) => {
   const formatCurrency = (value: number) =>
     `£${Math.floor(value).toLocaleString()}`
 
+  // writre a function to calculate profit. profit must be mortgage + 125% of the mortgage
+  const calculateProfit = (mortgage: number) => {
+    const profit = (mortgage / 100) * 125
+    return profit
+  }
+  const profit = calculateProfit(property.monthlyMortgage)
+  console.log('profit', profit)
   return (
     <Grid container spacing={2} sx={{ pt: 2 }}>
       <Grid item xs={12} sm={12} md={4}>
@@ -115,26 +122,34 @@ export const PropertyCard = ({ property, view }: Props) => {
           </Grid>
           <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
-              Setup fees
+              Setup fees (including all costs)
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-              {`£${property.setupFees.toLocaleString()}`}
+              {`£${property.setupFees?.toLocaleString()}`}
             </Typography>
           </Grid>
           <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
-              Profit over mortage term of {property.mortgageTerm} years
+              Profit over mortgage term of {property.mortgageTerm} years
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-              {property.totalProfitAfterSetupFees}
+              {property.cashFlowOverMortgageTerm}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6} md={6} padding={2}>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
             <Typography variant="body1" color="text.primary" component="p">
-              Profit over mortage term of {property.mortgageTerm} years - Stamp Duty
+              Property Price
             </Typography>
             <Typography variant="body2" color="text.secondary" component="p">
-              {property.totalProfitAfterSetupFeesAndStampDuty}
+              {property.price}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} sm={6} md={4} padding={2}>
+            <Typography variant="body1" color="text.primary" component="p">
+              Property Address
+            </Typography>
+            <Typography variant="body2" color="text.secondary" component="p">
+              {property.displayAddress}
             </Typography>
           </Grid>
         </Grid>
@@ -182,6 +197,13 @@ export const PropertyCard = ({ property, view }: Props) => {
                   secondary={`${property.repaymentPeriod} years`}
                 />
               </ListItem>
+
+              <ListItem>
+                <ListItemText
+                  primary={`ROI over ${property.mortgageTerm} years`}
+                  secondary={`${property.totalROI}`}
+                />
+              </ListItem>
             </List>
           </Grid>
           <Grid item xs={6} sm={4} md={4}>
@@ -218,6 +240,13 @@ export const PropertyCard = ({ property, view }: Props) => {
                   'no'
                 )}
               </ListItem>
+
+              <ListItem>
+                <ListItemText
+                  primary="Annual ROI"
+                  secondary={`${property.annualROI}`}
+                />
+              </ListItem>
             </List>
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
@@ -225,12 +254,13 @@ export const PropertyCard = ({ property, view }: Props) => {
               <ListItem>
                 <ListItemText
                   primary="Monthly profit"
-                  secondary={formatCurrency(
-                    property.profitAfterExpensesMonthly,
-                  )}
+                  secondary={property.monthlyCashFlow}
                 />
-                {property.profitAfterExpensesMonthly > 500 ? (
-                  <DoneIcon color="success" />
+                {(property.monthlyMortgage / 100) * 125 ? (
+                  <>
+                    <DoneIcon color="success" />
+                 
+                  </>
                 ) : (
                   'no'
                 )}
@@ -238,13 +268,30 @@ export const PropertyCard = ({ property, view }: Props) => {
               <ListItem>
                 <ListItemText
                   primary="Yearly profit"
-                  secondary={`${property.profitAfterExpensesYearly} (${property.annualProfitPercentage})`}
+                  secondary={`${property.yearlyCashFlow}`}
                 />
               </ListItem>
               <ListItem>
                 <ListItemText
                   primary="Total investment"
-                  secondary={formatCurrency(property.totalInvestment)}
+                  secondary={`${property.totalInvestment}`}
+                />
+              </ListItem>
+
+              <ListItem>
+                <ListItemText
+                  primary="cashFlow Over Mortgage Term Minus Stamp Duty"
+                  secondary={property.cashFlowOverMortgageTermMinusStampDuty}
+                />
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid item xs={6} sm={4} md={3}>
+            <List>
+              <ListItem>
+                <ListItemText
+                  primary="cashFlowOverMortgageTerm"
+                  secondary={property.cashFlowOverMortgageTerm}
                 />
               </ListItem>
             </List>
